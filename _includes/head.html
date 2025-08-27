@@ -7,14 +7,6 @@
 {% if page.tags %}
 <meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
 {%- assign nav = site.data[site.active_lang].navigation | default: site.data.navigation -%}
-<nav class="site-nav">
-  <ul>
-    {%- for item in nav -%}
-      <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-    {%- endfor -%}
-    <li>{% include lang-switcher.html %}</li>
-  </ul>
-</nav>
 <!-- Twitter Cards -->
 {% if page.feature %}{% capture feature %}{{ page.feature }}{% endcapture %}{% unless feature contains 'http://' or
 feature contains 'https://' %}{% capture feature %}{{ site.url }}/{{ feature }}{% endcapture %}{% endunless %}
