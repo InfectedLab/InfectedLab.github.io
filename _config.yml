@@ -9,6 +9,7 @@ background: "assets/img/moonrise-background.jpg"
 tiled_bg: false # Set this true if you want to tile your background image, otherwise it will be covered
 locale: en_US
 url: https://infectedlab.github.io
+parallel_localization: false
 
 # Jekyll
 permalink: /:title/
@@ -70,7 +71,18 @@ plugins:
   - jekyll-seo-tag
   - jekyll-paginate
   - jekyll-include-cache
-
+  - jekyll-polyglot
+languages: ["tr","en"]
+default_lang: "tr"
+exclude_from_localization:
+  - assets
+  - images
+  - css
+  - sitemap.xml   # kökte tek kalsın
+parallel_localization: true   # Windows'ta local geliştirme yapıyorsan false yap
+url: "https://infectedlab.github.io"  # üretim adresin; Polyglot link düzeltmeleri için önemli
+sass:
+  sourcemap: never
 jekyll-mentions:
   base_url: https://github.com
 

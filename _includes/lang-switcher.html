@@ -1,0 +1,24 @@
+<div class="lang-switcher">
+  {% for lang in site.languages %}
+    {%- comment -%}
+    Eğer sayfaların farklı permalinks kullanıyorsa (ör: /about vs /hakkimizda),
+    Polyglot'un page_id/permalink_lang özelliğinden faydalan:
+    {%- endcomment -%}
+    {% if page.permalink_lang %}
+      {% capture target_path %}
+        {%- if page.permalink_lang[lang] != '/' -%}{{ page.permalink_lang[lang] }}{%- endif -%}
+      {% endcapture %}
+      {% capture lang_href %}{{ site.baseurl }}/{% if lang != site.default_lang %}{{ lang }}/{% endif %}{{ target_path }}{% endcapture %}
+    {% else %}
+      {% capture lang_href %}{% if lang == site.default_lang %}{{ page.url }}{% else %}/{{ lang }}{{ page.url }}{% endif %}{% endcapture %}
+    {% endif %}
+
+    {% if lang == site.active_lang %}
+      <span class="is-active">{{ site.data[lang].strings.lang_name | default: lang | upcase }}</span>
+    {% else %}
+      <a {% static_href %}href="{{ lang_href }}"{% endstatic_href %}>
+        {{ site.data[lang].strings.lang_name | default: lang | upcase }}
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>

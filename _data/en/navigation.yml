@@ -1,0 +1,9 @@
+# _data/en/navigation.yml
+- title: "Home"
+  url: /
+- title: "Blog"
+  url: /posts/
+- title: "Projects"
+  url: /projects/
+- title: "About"
+  url: /about/
