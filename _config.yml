@@ -37,8 +37,8 @@ sass:
 #ad-client:
 #ad-slot:
 #bing-verify:
-email:research@infectedlab.com
-twitter: @infectedLab_
+email:"research@infectedlab.com"
+twitter: "@infectedLab_"
 #facebook: 
 github-url: https://github.com/InfectedLab
 #stackoverflow: 123456/username   from a "http://stackoverflow.com/users/123456/username" link
