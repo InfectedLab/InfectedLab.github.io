@@ -15,7 +15,6 @@
 				{%- for item in site.data.nav -%}
 				<li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
 				{%- endfor -%}
-				<li>{% include lang-switcher.html %}</li>
 				</ul>
 				</nav>
                 <li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">Learn More</span></a></li>
