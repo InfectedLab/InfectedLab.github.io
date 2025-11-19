@@ -5,7 +5,7 @@ description: "Reverse Engineering & Malware Analysis Research Lab"
 reading_time: true
 words_per_minute: 200
 logo: "assets/img/cute.jpg"
-background: "assets/img/bg.jpg"
+background: "assets/img/bg1.jpg"
 tiled_bg: false # Set this true if you want to tile your background image, otherwise it will be covered
 locale: en_US
 url: https://infectedlab.github.io
