@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Merhaba Dünya: InfectedLab Yayında!"
-date:   2025-11-19 15:00:00 +0300
+date:   2025-11-19 11:00:00 +0300
 categories: [Genel, Tanışma]
 tags: [blog, jekyll, coding]
 ---
