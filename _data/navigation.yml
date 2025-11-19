@@ -1,9 +1,6 @@
-# _data/tr/navigation.yml
-- title: "Anasayfa"
-  url: /
+# _data/navigation.yml
 - title: "Yazılar"
   url: /posts/
 - title: "Projeler"
   url: /projects/
-- title: "Hakkımda"
-  url: /about/
+
