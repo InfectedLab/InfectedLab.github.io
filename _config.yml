@@ -4,8 +4,8 @@ bio: "Welcome to InfectedLab"
 description: "Reverse Engineering & Malware Analysis Research Lab"
 reading_time: true
 words_per_minute: 200
-logo: "assets/img/logo1.jpg"
-background: "assets/img/guts_logo.jpg"
+logo: "assets/img/logo1.png"
+background: "assets/img/guts_background.png"
 tiled_bg: false # Set this true if you want to tile your background image, otherwise it will be covered
 locale: en_US
 url: https://infectedlab.github.io
