@@ -1,6 +1,6 @@
 ---
 layout: post-list
-title: Tüm Yazımlarım
+title: Tüm Yazılarım
 excerpt: "A List of Posts"
 comments: false
 ---
