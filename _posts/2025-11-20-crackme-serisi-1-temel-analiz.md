@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Crackme Serisi #1: Tersine Mühendisliğin 'Merhaba Dünya'sı"
-date:   2025-11-20 12:00:00 +0300
+date:   2025-11-19 12:00:00 +0300
 categories: [Reverse Engineering, Crackme]
 tags: [assembly, x64dbg, patching, beginner]
-feature: /assets/img/crackme-01.jpg
+#feature: /assets/img/crackme-01.jpg
 ---
 
 Zararlı yazılım analizine giden yol, önce zararsız yazılımların nasıl çalıştığını anlamaktan geçer. İşte bu noktada karşımıza **"Crackme"**ler çıkıyor.

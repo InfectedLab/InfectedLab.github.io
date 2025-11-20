@@ -4,7 +4,7 @@ title:  "Güvenli Bölge: Neden İzole Bir Analiz Laboratuvarına İhtiyacınız
 date:   2025-11-19 15:00:00 +0300
 categories: [Metodoloji, Başlangıç]
 tags: [malware-analysis, lab-setup, security, virtual-machine]
-feature: /assets/img/lab-setup.jpg # Eğer bir görsel eklersen burayı aktif et
+#feature: /assets/img/lab-setup.jpg # Eğer bir görsel eklersen burayı aktif et
 ---
 
 Tersine mühendislik ve zararlı yazılım analizi dünyasına adım atarken duyacağınız ilk ve en önemli kural şudur: **"Kendi bilgisayarında asla deneme."**
