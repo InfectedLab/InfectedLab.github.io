@@ -8,7 +8,7 @@ logo: "assets/img/cute.jpg"
 background: "assets/img/bg1.jpg"
 tiled_bg: false # Set this true if you want to tile your background image, otherwise it will be covered
 locale: en_US
-url: https://infectedlab.github.io
+url: "https://infectedlab.com"
 parallel_localization: false
 
 # Jekyll

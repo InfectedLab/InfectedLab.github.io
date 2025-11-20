@@ -1,17 +1,18 @@
 ---
 layout: post
-title:  "Merhaba Dünya: InfectedLab Yayında!"
+title:  "InfectedLab Yayında!"
 date:   2025-11-19 11:00:00 +0300
-categories: [Genel, Tanışma]
-tags: [blog, jekyll, coding]
+categories: [Genel, Tanışma, Giriş]
+tags: [blog, başlangıç]
 ---
 
-Her büyük yazılım projesi, ekrana yazdırılan o basit satırla başlar: **"Hello World"**.
+**"Herkese Merhaba"**.
 
-Uzun zamandır aklımda olan kişisel blogumu nihayet hayata geçirdim. **InfectedLab**, öğrendiğim, denediğim ve bazen de bozduğum teknolojik serüvenlerin bir dökümü olacak.
+Uzun zamandır aklımda olan kişisel blogumu nihayet hayata geçirdim. **InfectedLab**, öğrendiğim, denediğim ve bu süreçte öğrendiklerimi sizlerle de paylaştığım serüvenlerin bir dökümü olacak.
 
 ### 🚀 Neden Blog Yazıyorum?
 
+DFIR ve REM alanında bir süredir araştırıyor, öğreniyor ve uyguluyorum. Bu bildiklerimi meraklılarıyla paylaşmak ve bunu yaparken 
 Yazılım geliştirme ve teknoloji dünyası uçsuz bucaksız bir okyanus. Öğrendiğim bilgilerin uçup gitmemesi ve başkalarına da fayda sağlaması için bu alanı oluşturdum.
 
 Bu blogda şunları bulabileceksiniz:
