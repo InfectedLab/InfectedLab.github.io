@@ -5,18 +5,20 @@ Zararlı yazılımlar burada Havari, saldırı zincirleri Tutulma, IOC'ler
 Kurban Damgası olarak anlatılır. Site GitHub Pages üzerinde statik HTML
 olarak yayınlanır — Jekyll, build, derleyici yok.
 
-🌐 **Canlı site:** https://infectedlab.github.io/
+🌐 **Canlı:** https://infectedlab.com/  (mirror: https://infectedlab.github.io/)
+🌍 **Diller:** TR · EN · JP — sağ üst köşedeki dil seçicisinden değiştirilebilir
 
 ## Yapı
 
 ```
 InfectedLab/
-├── index.html                      # Ana sayfa (tematik makaleler + RE otopsileri)
+├── index.html                      # Ana sayfa
 ├── about.html                      # Kara Süvari hakkında
 ├── bestiary.html                   # Berserk ↔ siber tehdit eşleme tablosu
 ├── tags.html                       # Etiket bulutu + filtre (?t=ransomware)
-├── search.html                     # Lunr.js tabanlı istemci-taraflı arama (?q=...)
+├── search.html                     # Lunr.js tabanlı istemci-taraflı arama
 ├── 404.html                        # "Bu yol Tutulma'da kayboldu"
+├── CNAME                           # Custom domain → infectedlab.com
 ├── posts/
 │   ├── eclipse-ransomware.html
 │   ├── apostle-apt.html
@@ -28,84 +30,101 @@ InfectedLab/
 ├── assets/
 │   ├── css/style.css
 │   ├── js/
+│   │   ├── i18n.js                 # Çoklu dil motoru (TR/EN/JP)
 │   │   ├── main.js                 # Yıl, hover spotlight, kod kopyala, Berserker mod
-│   │   ├── tags.js                 # Etiket bulutu + filtre
-│   │   └── search.js               # Lunr.js arama
+│   │   ├── tags.js                 # Etiket bulutu + filtre (i18n-aware)
+│   │   └── search.js               # Lunr.js arama (i18n-aware)
+│   ├── i18n/
+│   │   └── strings.json            # Tüm UI string'leri (TR/EN/JP)
 │   ├── ioc/
 │   │   ├── writeup-template.yar
 │   │   └── writeup-template.stix.json
 │   └── og/
-│       ├── og-image.png            # 1200x630 sosyal kart (Twitter/Facebook)
-│       └── og-image.svg            # Vektör versiyon
+│       ├── og-image.png            # 1200x630 sosyal kart
+│       └── og-image.svg
 ├── data/
-│   └── posts.json                  # ⚠ Yeni post eklediğinde buraya da yaz
+│   └── posts.json                  # ⚠ Multi-lang post indeksi
 ├── scripts/
-│   └── make_og.py                  # OG PNG'yi yeniden üretir (Pillow gerekli)
+│   └── make_og.py                  # OG PNG'yi yeniden üretir (Pillow)
 ├── .github/workflows/check.yml     # HTML lint + JSON validate + lychee linkcheck
-├── .htmlhintrc                     # HTML lint kuralları
-├── .nojekyll                       # GitHub Pages Jekyll'i atlasın
+├── .htmlhintrc
+├── .nojekyll
 └── .gitignore
 ```
 
+## Çoklu dil (i18n)
+
+İstemci-taraflı bir mini i18n sistemi. Sayfa kaynağında string'ler Türkçe yazılır,
+JS sayfa yüklenince aktif dile göre değiştirir.
+
+**HTML işaretleme:**
+```html
+<p data-i18n="hero.lede">Bu metin TR; JS aktif dile göre değiştirir.</p>
+<h1 data-i18n-html="hero.title">İçerik <br> içerebilir.</h1>
+<input data-i18n-attr="placeholder:search.placeholder" placeholder="Ara…">
+```
+
+**Yeni string eklemek:**
+1. `assets/i18n/strings.json` dosyasında `"key": { "tr": "...", "en": "...", "ja": "..." }` ekle
+2. HTML'de `data-i18n="key"` kullan
+
+**Aktif dil seçim önceliği:** URL `?lang=xx` → `localStorage` → `<html lang>` → `navigator.language` → varsayılan (TR).
+
 ## Yeni bir otopsi (writeup) eklemek
 
-1. **HTML kopyala**
-   ```bash
-   cp posts/writeup-template.html posts/2026-05-12-asyncrat-otopsi.html
+1. **HTML kopyala** — `cp posts/writeup-template.html posts/2026-05-12-asyncrat.html`
+2. **İçeriği doldur** — `[ÖRNEK ŞABLON]`, `[TARİH]`, IOC tablosu, hash placeholder'ları
+3. **IOC dosyalarını üret** — `assets/ioc/<slug>.yar` ve `<slug>.stix.json`, post HTML'inde linkleri yenile
+4. **`data/posts.json`'a multi-lang kaydı ekle** —
+   ```json
+   {
+     "slug": "2026-05-12-asyncrat",
+     "url": "posts/2026-05-12-asyncrat.html",
+     "title":   { "tr": "...", "en": "...", "ja": "..." },
+     "excerpt": { "tr": "...", "en": "...", "ja": "..." },
+     "date": "2026-05-12",
+     "tags": ["stealer", "rat"]
+   }
    ```
-2. **İçeriği doldur** — `[ÖRNEK ŞABLON]`, `[TARİH]`, IOC tablosu, hash placeholder'ları.
-3. **IOC dosyalarını üret**
-   ```bash
-   cp assets/ioc/writeup-template.yar       assets/ioc/2026-05-12-asyncrat.yar
-   cp assets/ioc/writeup-template.stix.json assets/ioc/2026-05-12-asyncrat.stix.json
-   ```
-   Yeni HTML içindeki `assets/ioc/writeup-template.*` linklerini bu dosyalara güncelle.
-4. **`data/posts.json`'a kaydı ekle** — title, excerpt, tags, date.
-5. **`index.html`** "Otopsiler — Reverse Engineering" bölümündeki yorumlu örnek
-   `post-card`'ı kopyalayıp doldur.
-6. **Commit & push**
-   ```bash
-   git add .
-   git commit -m "Otopsi: AsyncRAT — Slan'ın küçük çocuğu"
-   git push
-   ```
-   Push'tan ~30-60 saniye sonra canlıda görünür.
+5. **`index.html`** "Otopsiler — Reverse Engineering" bölümündeki yorumlu örneği aç ve doldur
+6. **Commit & push** — `git add . && git commit -m "Otopsi: AsyncRAT" && git push`
 
-## OG/sosyal medya kartı
+Push'tan ~30-60 saniye sonra canlıda görünür.
 
-PNG önceden render edildi (`assets/og/og-image.png`).
-Tasarımı değiştirmek istersen:
+## Custom domain (infectedlab.com)
+
+`CNAME` dosyası repoda; GitHub Pages ayarı `gh api -X PUT repos/.../pages -f cname=infectedlab.com`
+ile yapılmıştır. DNS GitHub apex IP'lerine işaret etmektedir:
+
+```
+A     @    185.199.108.153 / 109.153 / 110.153 / 111.153
+AAAA  @    2606:50c0:8000::153 (× 4)
+CNAME www  infectedlab.github.io.
+```
+
+HTTPS Let's Encrypt sertifikası GitHub tarafından otomatik provision edilmiştir
+ve `https_enforced=true` ayarlıdır.
+
+## OG / sosyal medya kartı
+
+PNG önceden render edildi (`assets/og/og-image.png`). Tasarım değişirse:
 
 ```bash
+pip install Pillow
 python scripts/make_og.py
 ```
 
-`Pillow` paketi gerekiyor: `pip install Pillow`.
-
-## Berserker zırh modu (Berserker mode)
+## Berserker zırh modu
 
 Sağ üstteki **⛨** düğmesi yüksek-kontrast / agresif kırmızı temayı aç-kapatır.
-Tercih `localStorage` üzerinde saklanır, sayfa geçişlerinde kalıcıdır.
-
-## Tema kuralları
-
-- **Sahnenin dili Berserk olsun, ama teknik gerçekliği bozma.**
-  "Behelit titreşti" diyorsun, ama altına gerçek bir HTML smuggling
-  payload'ı koyuyorsun.
-- **Pyramid of Pain'e göre IOC sırası:** hash → IP → domain → host
-  artefaktı → tool → TTP. En değerlisi en altta.
-- **Her makale bir saha notuyla biter.** ("— Kara Süvari, [yer], [saat].")
+Tercih `localStorage` üzerinde saklanır.
 
 ## CI
 
 `.github/workflows/check.yml` her push'ta üç işi çalıştırır:
-
 1. **htmlhint** — HTML şablon hataları
-2. **JSON validate** — `data/posts.json` ve STIX bundle'ları parse edilebilir mi
+2. **JSON validate** — `data/posts.json`, `strings.json`, STIX bundle parse edilebilir mi
 3. **lychee** — ölü link kontrolü (HTML + Markdown)
-
-CI başarısız olursa Pages deploy yine olur (GitHub Pages ayrı bir akış),
-ama PR/commit'te kırmızı işaret görürsün.
 
 ## Yasal not
 
