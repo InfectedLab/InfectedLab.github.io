@@ -9,16 +9,16 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Otopsi Şablonu: Bir Havari'nin Anatomisi — InfectedLab">
 <meta property="og:description" content="Bir malware örneğinin teknik otopsisi için kullanılan InfectedLab şablonu.">
-<meta property="og:url" content="https://infectedlab.github.io/posts/writeup-template.html">
+<meta property="og:url" content="https://infectedlab.com/posts/writeup-template.html">
 <meta property="og:site_name" content="InfectedLab">
-<meta property="og:image" content="https://infectedlab.github.io/assets/og/og-image.png">
+<meta property="og:image" content="https://infectedlab.com/assets/og/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="InfectedLab — Kara Süvari'nin Saha Defteri">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Otopsi Şablonu: Bir Havari'nin Anatomisi — InfectedLab">
 <meta name="twitter:description" content="Bir malware örneğinin teknik otopsisi için kullanılan InfectedLab şablonu.">
-<meta name="twitter:image" content="https://infectedlab.github.io/assets/og/og-image.png">
+<meta name="twitter:image" content="https://infectedlab.com/assets/og/og-image.png">
 <meta name="theme-color" content="#0a0a0c">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,14 +35,14 @@
       <span class="brand-mark">⚔</span>
       <span class="brand-name">InfectedLab</span>
     </a>
-    <p class="brand-sub">Kara Süvari'nin Saha Defteri</p>
+    <p class="brand-sub" data-i18n="brand.sub">Kara Süvari'nin Saha Defteri</p>
   </div>
   <nav class="site-nav">
-    <a href="../index.html">Defter</a>
-    <a href="../about.html">Kara Süvari</a>
-    <a href="../bestiary.html">Bestiary</a>
-    <a href="../tags.html">Etiketler</a>
-    <a href="../search.html">Ara</a>
+    <a href="../index.html" data-i18n="nav.diary">Defter</a>
+    <a href="../about.html" data-i18n="nav.about">Kara Süvari</a>
+    <a href="../bestiary.html" data-i18n="nav.bestiary">Bestiary</a>
+    <a href="../tags.html" data-i18n="nav.tags">Etiketler</a>
+    <a href="../search.html" data-i18n="nav.search">Ara</a>
     <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
     <button id="armor-toggle" class="armor-btn" type="button" aria-label="Berserker zırhını giy/çıkar" title="Berserker Zırh">⛨</button>
   </nav>
@@ -210,7 +210,7 @@ tags: [attack.t1059.001, attack.t1218.011, berserk.behelit]</code></pre>
         author      = "Kara Süvari (InfectedLab)"
         description = "Behelit-7B2A loader (Stage 1)"
         date        = "2026-04-29"
-        ref         = "https://infectedlab.github.io/posts/writeup-template.html"
+        ref         = "https://infectedlab.com/posts/writeup-template.html"
     strings:
         $s1 = "Behelit-7B2A" wide ascii
         $s2 = "AAAA-BERSERK-KEY-AAAA" ascii
@@ -260,10 +260,10 @@ tags: [attack.t1059.001, attack.t1218.011, berserk.behelit]</code></pre>
   <div class="footer-cols">
     <div>
       <p class="brand-name small">InfectedLab</p>
-      <p class="footer-note">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
+      <p class="footer-note" data-i18n="footer.disclaimer">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
     </div>
     <div>
-      <p class="footer-head">Bağlantılar</p>
+      <p class="footer-head" data-i18n="footer.head.links">Bağlantılar</p>
       <ul>
         <li><a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="../bestiary.html">Bestiary</a></li>
@@ -271,13 +271,14 @@ tags: [attack.t1059.001, attack.t1218.011, berserk.behelit]</code></pre>
       </ul>
     </div>
     <div>
-      <p class="footer-head">Damga</p>
-      <p class="footer-note">"Her zafer, bir sonraki demonu çağırır."</p>
+      <p class="footer-head" data-i18n="footer.head.brand">Damga</p>
+      <p class="footer-note" data-i18n="footer.brand.note">"Her zafer, bir sonraki demonu çağırır."</p>
     </div>
   </div>
   <p class="copyright">© <span id="year"></span> InfectedLab — Kara Süvari'nin Defteri</p>
 </footer>
 
+<script src="../assets/js/i18n.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>
 </html>

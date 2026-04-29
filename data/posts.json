@@ -1,103 +1,159 @@
 {
-  "_comment": "InfectedLab posts index. Yeni bir post eklediğinde buraya da kaydını ekle. Tag isimlerini ASCII-slug olarak yaz (turkce karakter yok).",
+  "_comment": "InfectedLab posts index. Multi-lang. Yeni post eklediğinde title/excerpt/category alanlarına 3 dil de yaz.",
   "posts": [
     {
       "slug": "eclipse-ransomware",
       "url": "posts/eclipse-ransomware.html",
-      "title": "Tutulma: Fidye Yazılımının Kurban Ritüeli",
-      "excerpt": "Behelit titreşmeye başladığında geri dönüş yoktur. Ransomware operatörleri tıpkı Griffith gibi sadık ekibi sunağa çevirir. Modern fidye operasyonlarını Tutulma'nın beş aşamasıyla okuyan bir saha analizi.",
+      "title": {
+        "tr": "Tutulma: Fidye Yazılımının Kurban Ritüeli",
+        "en": "The Eclipse: Ransomware as a Sacrificial Ritual",
+        "ja": "蝕：ランサムウェアという供犠の儀"
+      },
+      "excerpt": {
+        "tr": "Behelit titreşmeye başladığında geri dönüş yoktur. Ransomware operatörleri tıpkı Griffith gibi sadık ekibi sunağa çevirir. Modern fidye operasyonlarını Tutulma'nın beş aşamasıyla okuyan bir saha analizi.",
+        "en": "Once the Behelit begins to tremble, there is no return. Ransomware operators turn the loyal team into sacrifices, just like Griffith. A field analysis reading modern ransom operations through the five phases of the Eclipse.",
+        "ja": "ベヘリットが震え始めれば、もう戻れぬ。ランサムウェアの実行者はグリフィスのごとく忠実な仲間を祭壇に連れて行く。現代のランサム作戦を蝕の五段階で読む戦野分析。"
+      },
       "date": "2026-04-22",
-      "category": "Tematik",
+      "category": { "tr": "Tematik", "en": "Thematic", "ja": "主題" },
       "tags": ["tutulma", "ransomware", "incident-response", "tematik"],
       "berserk": "Eclipse"
     },
     {
       "slug": "apostle-apt",
       "url": "posts/apostle-apt.html",
-      "title": "Havariler: APT Gruplarının Anatomi Dersi",
-      "excerpt": "Bir Havari, sıradan bir demondan iki şeyle ayrılır: bir zamanlar insandı, ve bir zamanlar bir şeyi sevdi. APT aktörleri de aynı şekilde inşa edilir.",
+      "title": {
+        "tr": "Havariler: APT Gruplarının Anatomi Dersi",
+        "en": "Apostles: An Anatomy Lesson on APT Groups",
+        "ja": "使徒たち：APT 集団の解剖学講義"
+      },
+      "excerpt": {
+        "tr": "Bir Havari, sıradan bir demondan iki şeyle ayrılır: bir zamanlar insandı, ve bir zamanlar bir şeyi sevdi. APT aktörleri de aynı şekilde inşa edilir.",
+        "en": "An Apostle differs from an ordinary demon in two things: they were once human, and they once loved something. APT actors are built the same way.",
+        "ja": "使徒が普通の魔物と違うのは二つの点だ — かつて人間で、かつて何かを愛していた。APT 主体も同じ作りである。"
+      },
       "date": "2026-04-15",
-      "category": "Tematik",
+      "category": { "tr": "Tematik", "en": "Thematic", "ja": "主題" },
       "tags": ["havari", "apt", "threat-actor", "tematik"],
       "berserk": "Apostle"
     },
     {
       "slug": "behelit-phishing",
       "url": "posts/behelit-phishing.html",
-      "title": "Behelit: Bir Tıklamanın Kapı Açtığı Yer",
-      "excerpt": "Kırmızı Behelit yere düştüğünde sıradan bir taş gibi görünür. Kullanıcının gözünde de oltalama bağlantısı sıradan bir e-postadır. Phishing zincirinin üç fazı.",
+      "title": {
+        "tr": "Behelit: Bir Tıklamanın Kapı Açtığı Yer",
+        "en": "Behelit: Where a Single Click Opens the Gate",
+        "ja": "ベヘリット：一回の押下が門を開く場所"
+      },
+      "excerpt": {
+        "tr": "Kırmızı Behelit yere düştüğünde sıradan bir taş gibi görünür. Kullanıcının gözünde de oltalama bağlantısı sıradan bir e-postadır. Phishing zincirinin üç fazı.",
+        "en": "A fallen red Behelit looks like an ordinary stone. To the user's eye, a phishing link looks like an ordinary email. The three phases of the phishing chain.",
+        "ja": "落ちた赤いベヘリットはただの石に見える。利用者の目にもフィッシングのリンクはただのメールに見える。フィッシング鎖の三段階。"
+      },
       "date": "2026-04-08",
-      "category": "Tematik",
+      "category": { "tr": "Tematik", "en": "Thematic", "ja": "主題" },
       "tags": ["behelit", "phishing", "initial-access", "tematik"],
       "berserk": "Behelit"
     },
     {
       "slug": "god-hand-nation-state",
       "url": "posts/god-hand-nation-state.html",
-      "title": "Tanrısal El: Devlet Destekli Beş Lord",
-      "excerpt": "Void, Slan, Ubik, Conrad, Femto. Causality'nin kendisi kadar görünmezler; çünkü çoğu zaman saldırının kendisi değil, saldırının zorunluluğudurlar. Nation-state aktörleri.",
+      "title": {
+        "tr": "Tanrısal El: Devlet Destekli Beş Lord",
+        "en": "The God Hand: Five State-Backed Lords",
+        "ja": "ゴッド・ハンド：国家支援の五人の主"
+      },
+      "excerpt": {
+        "tr": "Void, Slan, Ubik, Conrad, Femto. Causality'nin kendisi kadar görünmezler; çünkü çoğu zaman saldırının kendisi değil, saldırının zorunluluğudurlar. Nation-state aktörleri.",
+        "en": "Void, Slan, Ubik, Conrad, Femto. Invisible like causality itself, because they are not the attack but the inevitability of the attack. Nation-state actors.",
+        "ja": "ヴォイド、スラン、ユービック、コンラッド、フェムト。因果そのもののごとく見えぬ — 彼らは攻撃ではなく攻撃の必然性だからだ。国家支援の主体。"
+      },
       "date": "2026-04-01",
-      "category": "Tematik",
+      "category": { "tr": "Tematik", "en": "Thematic", "ja": "主題" },
       "tags": ["god-hand", "nation-state", "apt", "tehdit-istihbarati", "tematik"],
       "berserk": "God Hand"
     },
     {
       "slug": "brand-of-sacrifice-ioc",
       "url": "posts/brand-of-sacrifice-ioc.html",
-      "title": "Kurban Damgası: IOC'lerin Karanlık Mantığı",
-      "excerpt": "Boynundaki damga her gece kanar ve demonları çağırır. Bir IOC de tam olarak budur: avcının kurban olarak işaretlenmiş izi. Pyramid of Pain ve Sigma kuralları.",
+      "title": {
+        "tr": "Kurban Damgası: IOC'lerin Karanlık Mantığı",
+        "en": "Brand of Sacrifice: The Dark Logic of IOCs",
+        "ja": "供犠の烙印：IOC の暗き理"
+      },
+      "excerpt": {
+        "tr": "Boynundaki damga her gece kanar ve demonları çağırır. Bir IOC de tam olarak budur: avcının kurban olarak işaretlenmiş izi. Pyramid of Pain ve Sigma kuralları.",
+        "en": "The brand on the neck bleeds each night and summons demons. An IOC is exactly that: the trace of a hunter marked as prey. Pyramid of Pain and Sigma rules.",
+        "ja": "首の烙印は夜ごとに血を流し、魔物を呼ぶ。IOC とはまさにそれ — 獲物として刻まれた狩人の痕跡。Pyramid of Pain と Sigma 規則。"
+      },
       "date": "2026-03-25",
-      "category": "Tematik",
+      "category": { "tr": "Tematik", "en": "Thematic", "ja": "主題" },
       "tags": ["damga", "ioc", "detection", "sigma", "yara", "tematik"],
       "berserk": "Brand of Sacrifice"
     },
     {
       "slug": "berserker-armor-edr",
       "url": "posts/berserker-armor-edr.html",
-      "title": "Çılgın Zırh: EDR'nin Bedeli",
-      "excerpt": "Berserker Zırh, Guts'ı her demondan koruyabilir; ama her giydiğinde bir parça aklını yer. Agresif EDR/XDR yapılandırmalarının sınırı.",
+      "title": {
+        "tr": "Çılgın Zırh: EDR'nin Bedeli",
+        "en": "The Berserker Armor: The Price of EDR",
+        "ja": "狂戦士の甲冑：EDR の代償"
+      },
+      "excerpt": {
+        "tr": "Berserker Zırh, Guts'ı her demondan koruyabilir; ama her giydiğinde bir parça aklını yer. Agresif EDR/XDR yapılandırmalarının sınırı.",
+        "en": "The Berserker Armor can protect Guts from any demon, but each time he wears it, it eats a piece of his sanity. The limit of aggressive EDR/XDR configurations.",
+        "ja": "狂戦士の甲冑はガッツをいかなる魔物からも護るが、纏うたびに正気の一片を喰らう。攻めの EDR/XDR 設定の限界。"
+      },
       "date": "2026-03-18",
-      "category": "Tematik",
+      "category": { "tr": "Tematik", "en": "Thematic", "ja": "主題" },
       "tags": ["berserker-armor", "edr", "xdr", "savunma", "tematik"],
       "berserk": "Berserker Armor"
     },
     {
       "slug": "writeup-template",
       "url": "posts/writeup-template.html",
-      "title": "Otopsi Şablonu: Bir Havari'nin Anatomisi",
-      "excerpt": "Yeni bir malware analizi yazarken kullanılan iskelet: triage, IOC tablosu, process ağacı, statik/dinamik analiz, C2 protokolü, Sigma + YARA kuralları.",
+      "title": {
+        "tr": "Otopsi Şablonu: Bir Havari'nin Anatomisi",
+        "en": "Autopsy Template: Anatomy of an Apostle",
+        "ja": "検分の雛形：使徒の解剖学"
+      },
+      "excerpt": {
+        "tr": "Yeni bir malware analizi yazarken kullanılan iskelet: triage, IOC tablosu, process ağacı, statik/dinamik analiz, C2 protokolü, Sigma + YARA kuralları.",
+        "en": "The skeleton used when writing a new malware analysis: triage, IOC table, process tree, static/dynamic analysis, C2 protocol, Sigma + YARA rules.",
+        "ja": "新たなマルウェア解析を書く際に用いる骨子：トリアージ、IOC 表、プロセス樹、静的・動的解析、C2 プロトコル、Sigma と YARA 規則。"
+      },
       "date": "2026-04-29",
-      "category": "Otopsi",
+      "category": { "tr": "Otopsi", "en": "Autopsy", "ja": "検分" },
       "tags": ["sablon", "writeup", "reverse-engineering", "otopsi"],
       "berserk": "—"
     }
   ],
   "tags": [
-    { "slug": "tematik", "label": "Tematik" },
-    { "slug": "otopsi", "label": "Otopsi" },
-    { "slug": "writeup", "label": "Writeup" },
-    { "slug": "reverse-engineering", "label": "Reverse Engineering" },
-    { "slug": "ransomware", "label": "Ransomware" },
-    { "slug": "phishing", "label": "Phishing" },
-    { "slug": "apt", "label": "APT" },
-    { "slug": "nation-state", "label": "Nation-State" },
-    { "slug": "ioc", "label": "IOC" },
-    { "slug": "sigma", "label": "Sigma" },
-    { "slug": "yara", "label": "YARA" },
-    { "slug": "detection", "label": "Detection" },
-    { "slug": "edr", "label": "EDR" },
-    { "slug": "xdr", "label": "XDR" },
-    { "slug": "savunma", "label": "Savunma" },
-    { "slug": "incident-response", "label": "Incident Response" },
-    { "slug": "initial-access", "label": "Initial Access" },
-    { "slug": "threat-actor", "label": "Threat Actor" },
-    { "slug": "tehdit-istihbarati", "label": "Tehdit İstihbaratı" },
-    { "slug": "tutulma", "label": "Tutulma (Eclipse)" },
-    { "slug": "havari", "label": "Havari (Apostle)" },
-    { "slug": "behelit", "label": "Behelit" },
-    { "slug": "god-hand", "label": "Tanrısal El" },
-    { "slug": "damga", "label": "Damga" },
-    { "slug": "berserker-armor", "label": "Çılgın Zırh" },
-    { "slug": "sablon", "label": "Şablon" }
+    { "slug": "tematik",            "label": { "tr": "Tematik",            "en": "Thematic",          "ja": "主題" } },
+    { "slug": "otopsi",             "label": { "tr": "Otopsi",             "en": "Autopsy",           "ja": "検分" } },
+    { "slug": "writeup",            "label": { "tr": "Writeup",            "en": "Writeup",           "ja": "ライトアップ" } },
+    { "slug": "reverse-engineering","label": { "tr": "Reverse Engineering","en": "Reverse Engineering","ja": "リバースエンジニアリング" } },
+    { "slug": "ransomware",         "label": { "tr": "Ransomware",         "en": "Ransomware",        "ja": "ランサムウェア" } },
+    { "slug": "phishing",           "label": { "tr": "Phishing",           "en": "Phishing",          "ja": "フィッシング" } },
+    { "slug": "apt",                "label": { "tr": "APT",                "en": "APT",               "ja": "APT" } },
+    { "slug": "nation-state",       "label": { "tr": "Nation-State",       "en": "Nation-State",      "ja": "国家支援" } },
+    { "slug": "ioc",                "label": { "tr": "IOC",                "en": "IOC",               "ja": "IOC" } },
+    { "slug": "sigma",              "label": { "tr": "Sigma",              "en": "Sigma",             "ja": "Sigma" } },
+    { "slug": "yara",               "label": { "tr": "YARA",               "en": "YARA",              "ja": "YARA" } },
+    { "slug": "detection",          "label": { "tr": "Detection",          "en": "Detection",         "ja": "検出" } },
+    { "slug": "edr",                "label": { "tr": "EDR",                "en": "EDR",               "ja": "EDR" } },
+    { "slug": "xdr",                "label": { "tr": "XDR",                "en": "XDR",               "ja": "XDR" } },
+    { "slug": "savunma",            "label": { "tr": "Savunma",            "en": "Defense",           "ja": "防衛" } },
+    { "slug": "incident-response",  "label": { "tr": "Incident Response",  "en": "Incident Response", "ja": "インシデント対応" } },
+    { "slug": "initial-access",     "label": { "tr": "Initial Access",     "en": "Initial Access",    "ja": "初期侵入" } },
+    { "slug": "threat-actor",       "label": { "tr": "Threat Actor",       "en": "Threat Actor",      "ja": "脅威主体" } },
+    { "slug": "tehdit-istihbarati", "label": { "tr": "Tehdit İstihbaratı", "en": "Threat Intelligence","ja": "脅威情報" } },
+    { "slug": "tutulma",            "label": { "tr": "Tutulma",            "en": "Eclipse",           "ja": "蝕" } },
+    { "slug": "havari",             "label": { "tr": "Havari",             "en": "Apostle",           "ja": "使徒" } },
+    { "slug": "behelit",            "label": { "tr": "Behelit",            "en": "Behelit",           "ja": "ベヘリット" } },
+    { "slug": "god-hand",           "label": { "tr": "Tanrısal El",        "en": "God Hand",          "ja": "ゴッド・ハンド" } },
+    { "slug": "damga",              "label": { "tr": "Damga",              "en": "Brand",             "ja": "烙印" } },
+    { "slug": "berserker-armor",    "label": { "tr": "Çılgın Zırh",        "en": "Berserker Armor",   "ja": "狂戦士の甲冑" } },
+    { "slug": "sablon",             "label": { "tr": "Şablon",             "en": "Template",          "ja": "雛形" } }
   ]
 }

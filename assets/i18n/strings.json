@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "default": "tr",
+    "supported": ["tr", "en", "ja"],
+    "names": { "tr": "TR", "en": "EN", "ja": "JP" }
+  },
+
+  "brand.sub": {
+    "tr": "Kara Süvari'nin Saha Defteri",
+    "en": "The Black Swordsman's Field Notes",
+    "ja": "黒の剣士の戦野手帖"
+  },
+
+  "nav.diary":     { "tr": "Defter",     "en": "Notes",      "ja": "手帖" },
+  "nav.about":     { "tr": "Kara Süvari","en": "The Knight", "ja": "剣士について" },
+  "nav.bestiary":  { "tr": "Bestiary",   "en": "Bestiary",   "ja": "魔物図鑑" },
+  "nav.tags":      { "tr": "Etiketler",  "en": "Tags",       "ja": "印" },
+  "nav.search":    { "tr": "Ara",        "en": "Search",     "ja": "検索" },
+  "nav.github":    { "tr": "GitHub",     "en": "GitHub",     "ja": "GitHub" },
+
+  "armor.title.on":  { "tr": "Berserker Zırh: AÇIK",  "en": "Berserker Armor: ON",  "ja": "狂戦士の甲冑：オン" },
+  "armor.title.off": { "tr": "Berserker Zırh: KAPALI","en": "Berserker Armor: OFF", "ja": "狂戦士の甲冑：オフ" },
+  "lang.switch.label": { "tr": "Dil",     "en": "Language",  "ja": "言語" },
+
+  "hero.eyebrow": {
+    "tr": "— Tutulma'nın gölgesinde —",
+    "en": "— Under the shadow of the Eclipse —",
+    "ja": "—蝕の影の下で—"
+  },
+  "hero.title": {
+    "tr": "Bu dünya<br>Havarilerle dolu.",
+    "en": "This world<br>is full of Apostles.",
+    "ja": "この世界は<br>使徒で満ちている。"
+  },
+  "hero.lede": {
+    "tr": "Her zararlı yazılım bir demondur; her saldırı bir kurban ritüeli. InfectedLab, ağda yürüyen Havarileri parçalamaya çalışan bir Kara Süvari'nin defteridir. Burada bulduğun her makale, Ejder Kıran'la kazılmış bir leş otopsisidir.",
+    "en": "Every malware is a demon; every attack is a sacrificial ritual. InfectedLab is the field notebook of a Black Swordsman trying to cleave the Apostles walking through the network. Each article here is a corpse autopsy carved with the Dragonslayer.",
+    "ja": "全てのマルウェアは魔物であり、全ての攻撃は供犠の儀式である。InfectedLab はネットワークを歩き回る使徒を斬ろうとする黒の剣士の手帖である。この帖の記事はすべてドラゴンころしで切り開いた屍の検分書だ。"
+  },
+  "hero.cta.primary": { "tr": "Son Avlar",       "en": "Latest Hunts",   "ja": "近頃の狩り" },
+  "hero.cta.ghost":   { "tr": "Bestiary'i Aç",   "en": "Open Bestiary",  "ja": "魔物図鑑を開く" },
+
+  "feed.head.title": { "tr": "Son Otopsiler",  "en": "Latest Autopsies",   "ja": "近頃の検分" },
+  "feed.head.sub":   { "tr": "Tutulma sonrası açılan her demonun kayıtları.",
+                       "en": "Records of every demon opened after the Eclipse.",
+                       "ja": "蝕の後で切り開いた魔物の記録。" },
+
+  "quote.body": {
+    "tr": "\"İnsan kaçabilir, saklanabilir, ağlayabilir. Ama eninde sonunda kılıcı kaldırması gerekir.\"",
+    "en": "\"A man can run, hide, or weep. But sooner or later he must lift the sword.\"",
+    "ja": "「人は逃げ、隠れ、泣くことができる。だが、いつかは剣を持ち上げねばならない。」"
+  },
+  "quote.cite": {
+    "tr": "— Kara Süvari'nin saha kuralı",
+    "en": "— Field rule of the Black Swordsman",
+    "ja": "—黒の剣士の戦野の掟"
+  },
+
+  "writeups.head.title": { "tr": "Otopsiler — Reverse Engineering", "en": "Autopsies — Reverse Engineering", "ja": "検分 — リバースエンジニアリング" },
+  "writeups.head.sub":   { "tr": "Sahadan toplanan demon leşlerinin ayrıntılı kesimi. Hash, asm, IOC, kural.",
+                           "en": "Detailed dissection of demon corpses gathered from the field. Hash, asm, IOC, rules.",
+                           "ja": "戦野で集めた魔物の屍の精密な解剖。ハッシュ、アセンブリ、IOC、検出規則。" },
+
+  "card.read": { "tr": "Defteri Aç →", "en": "Open Notes →", "ja": "帳を開く →" },
+
+  "footer.disclaimer": {
+    "tr": "Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.",
+    "en": "This notebook is fiction and for educational purposes. The Berserk universe belongs to Kentaro Miura.",
+    "ja": "本帖はフィクションであり、教育目的です。ベルセルクの世界観は三浦建太郎氏に帰属します。"
+  },
+  "footer.head.links": { "tr": "Bağlantılar", "en": "Links",       "ja": "繋がり" },
+  "footer.head.brand": { "tr": "Damga",       "en": "Brand",       "ja": "印" },
+  "footer.brand.note": {
+    "tr": "\"Her zafer, bir sonraki demonu çağırır.\"",
+    "en": "\"Every victory summons the next demon.\"",
+    "ja": "「あらゆる勝利が次の魔物を呼ぶ。」"
+  },
+
+  "search.eyebrow": { "tr": "— Ejder Kıran ile av —",
+                      "en": "— Hunt with the Dragonslayer —",
+                      "ja": "—ドラゴンころしと共に狩る—" },
+  "search.title":   { "tr": "Defterde Ara",    "en": "Search the Notes",        "ja": "手帖を検索" },
+  "search.sub":     { "tr": "Bir kelime, bir hash, bir aile adı, bir TTP — hepsini tarar.",
+                      "en": "A word, a hash, a family name, a TTP — it scans them all.",
+                      "ja": "言葉、ハッシュ、ファミリー名、TTP — 全てを走査する。" },
+  "search.placeholder":     { "tr": "Behelit, ransomware, kerberoasting…",
+                              "en": "Behelit, ransomware, kerberoasting…",
+                              "ja": "ベヘリット、ランサムウェア、Kerberoasting…" },
+  "search.status.loading":  { "tr": "İndeks yükleniyor…",
+                              "en": "Loading index…",
+                              "ja": "索引を読み込み中…" },
+  "search.status.results":  { "tr": "{n} sonuç.",
+                              "en": "{n} results.",
+                              "ja": "{n} 件。" },
+  "search.status.all":      { "tr": "Tüm makaleler — bir şey yazmaya başla.",
+                              "en": "All articles — start typing to filter.",
+                              "ja": "全ての記事 — 文字を打って絞り込み開始。" },
+  "search.status.error":    { "tr": "Arama hatası: {e}",
+                              "en": "Search error: {e}",
+                              "ja": "検索エラー：{e}" },
+  "search.empty":           { "tr": "Bu sözcükle eşleşen bir damga bulunmadı. Başka bir kelimeyle dene.",
+                              "en": "No brand matched this term. Try another word.",
+                              "ja": "この語に合う印は見つからなかった。別の言葉で試せ。" },
+
+  "tags.eyebrow":  { "tr": "— Damgaların kataloğu —",
+                     "en": "— Catalogue of brands —",
+                     "ja": "—印の目録—" },
+  "tags.title":    { "tr": "Etiketler",  "en": "Tags",  "ja": "印" },
+  "tags.sub":      { "tr": "Defterdeki her makale, en az bir damga taşır. İstediğin damgayı seç.",
+                     "en": "Every article carries at least one brand. Choose the one you seek.",
+                     "ja": "手帖の各記事には少なくとも一つの印が刻まれている。望む印を選べ。" },
+  "tags.tag.title":{ "tr": "Etiket: {t}",         "en": "Tag: {t}",                  "ja": "印：{t}" },
+  "tags.tag.sub":  { "tr": "Bu damgayı taşıyan tüm makaleler aşağıda.",
+                     "en": "All articles bearing this brand are below.",
+                     "ja": "この印を持つ全ての記事は下記。" },
+  "tags.empty":    { "tr": "Bu damgayla işaretlenmiş bir kayıt yok.",
+                     "en": "No record is marked with this brand.",
+                     "ja": "この印で記された記録はない。" },
+  "tags.all":      { "tr": "Tümü",          "en": "All",          "ja": "全て" },
+  "tags.indexerr": { "tr": "İndeks yüklenemedi: {e}",
+                     "en": "Failed to load index: {e}",
+                     "ja": "索引の読み込みに失敗：{e}" },
+
+  "bestiary.eyebrow": { "tr": "— Demonların kataloğu —",
+                        "en": "— Catalogue of demons —",
+                        "ja": "—魔物の目録—" },
+  "bestiary.title":   { "tr": "Bestiary",       "en": "Bestiary",  "ja": "魔物図鑑" },
+  "bestiary.sub":     { "tr": "Berserk evrenindeki her varlığın bir siber karşılığı vardır. Bu sayfa, defterin pusulasıdır: hangi terim hangi tehditle çakışıyor?",
+                        "en": "Every being in the Berserk universe has a cyber counterpart. This page is the compass of the notebook: which term maps to which threat?",
+                        "ja": "ベルセルクの世界の存在はそれぞれサイバーの対応物を持つ。このページは手帖の羅針盤だ — どの語がどの脅威に重なるか。" },
+
+  "error.eyebrow": { "tr": "— Tutulma'nın gölgesinde —",
+                     "en": "— Under the shadow of the Eclipse —",
+                     "ja": "—蝕の影の下で—" },
+  "error.title":   { "tr": "Bu yol Tutulma'da kayboldu",
+                     "en": "This path was lost in the Eclipse",
+                     "ja": "この道は蝕で失われた" },
+  "error.lede":    { "tr": "Damgan bir başka yere işaret ediyor. Belki Behelit yanlış titredi, belki Skull Knight kapıyı önünde kapadı. Ne olursa olsun bu koridorda seni bekleyen bir Havari yok.",
+                     "en": "Your brand points elsewhere. Perhaps the Behelit trembled wrong, perhaps the Skull Knight closed the door before you. Either way, no Apostle waits for you in this hallway.",
+                     "ja": "お前の印は別の場所を指している。ベヘリットが誤って震えたか、髑髏の騎士が前で扉を閉じたか。いずれにせよ、この回廊にお前を待つ使徒はいない。" },
+  "error.btn.home":     { "tr": "Deftere Dön",          "en": "Back to Notes",        "ja": "手帖へ戻る" },
+  "error.btn.search":   { "tr": "Ejder Kıran ile Ara",  "en": "Hunt with Dragonslayer","ja": "ドラゴンころしで狩る" },
+  "error.btn.bestiary": { "tr": "Bestiary'i Aç",        "en": "Open Bestiary",         "ja": "魔物図鑑を開く" },
+  "error.url":          { "tr": "Aradığın URL:",        "en": "Requested URL:",        "ja": "要求された URL：" },
+
+  "post.langnotice": {
+    "tr": "🌐 Bu makale Türkçe yazıldı. Çevirmenin defterinde sıraya alındı; tam EN/JP sürümü yakında.",
+    "en": "🌐 This article was written in Turkish. Below is a summary in English; the full Turkish version follows. Switch language to TR for the original.",
+    "ja": "🌐 この記事はトルコ語で書かれた。下に日本語の要約を載せる。原文はトルコ語版（TR）で読める。"
+  },
+  "post.summary": { "tr": "Özet", "en": "Summary", "ja": "要約" }
+}

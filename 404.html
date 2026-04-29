@@ -9,8 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="404 — Tutulma'da Kayboldun">
 <meta property="og:description" content="Aradığın sayfa Tutulma'da kayboldu. Damgan bir başka yere gitmiş.">
-<meta property="og:url" content="https://infectedlab.github.io/404.html">
-<meta property="og:image" content="https://infectedlab.github.io/assets/og/og-image.png">
+<meta property="og:url" content="https://infectedlab.com/404.html">
+<meta property="og:image" content="https://infectedlab.com/assets/og/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -30,14 +30,14 @@
       <span class="brand-mark">⚔</span>
       <span class="brand-name">InfectedLab</span>
     </a>
-    <p class="brand-sub">Kara Süvari'nin Saha Defteri</p>
+    <p class="brand-sub" data-i18n="brand.sub">Kara Süvari'nin Saha Defteri</p>
   </div>
   <nav class="site-nav">
-    <a href="/index.html">Defter</a>
-    <a href="/about.html">Kara Süvari</a>
-    <a href="/bestiary.html">Bestiary</a>
-    <a href="/tags.html">Etiketler</a>
-    <a href="/search.html">Ara</a>
+    <a href="/index.html" data-i18n="nav.diary">Defter</a>
+    <a href="/about.html" data-i18n="nav.about">Kara Süvari</a>
+    <a href="/bestiary.html" data-i18n="nav.bestiary">Bestiary</a>
+    <a href="/tags.html" data-i18n="nav.tags">Etiketler</a>
+    <a href="/search.html" data-i18n="nav.search">Ara</a>
     <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
     <button id="armor-toggle" class="armor-btn" type="button" aria-label="Berserker zırhını giy/çıkar" title="Berserker Zırh">⛨</button>
   </nav>
@@ -49,23 +49,19 @@
       <div class="brand-of-sacrifice"></div>
     </div>
 
-    <p class="post-eyebrow">— Tutulma'nın gölgesinde —</p>
+    <p class="post-eyebrow" data-i18n="error.eyebrow">— Tutulma'nın gölgesinde —</p>
     <h1 class="error-code">404</h1>
-    <h2 class="error-title">Bu yol Tutulma'da kayboldu</h2>
-    <p class="error-lede">
-      Damgan bir başka yere işaret ediyor. Belki Behelit yanlış titredi,
-      belki Skull Knight kapıyı önünde kapadı. Ne olursa olsun bu koridorda
-      seni bekleyen bir Havari yok.
-    </p>
+    <h2 class="error-title" data-i18n="error.title">Bu yol Tutulma'da kayboldu</h2>
+    <p class="error-lede" data-i18n="error.lede">Damgan bir başka yere işaret ediyor. Belki Behelit yanlış titredi, belki Skull Knight kapıyı önünde kapadı. Ne olursa olsun bu koridorda seni bekleyen bir Havari yok.</p>
 
     <div class="error-actions">
-      <a href="/" class="btn btn-primary">Deftere Dön</a>
-      <a href="/search.html" class="btn btn-ghost">Ejder Kıran ile Ara</a>
-      <a href="/bestiary.html" class="btn btn-ghost">Bestiary'i Aç</a>
+      <a href="/" class="btn btn-primary" data-i18n="error.btn.home">Deftere Dön</a>
+      <a href="/search.html" class="btn btn-ghost" data-i18n="error.btn.search">Ejder Kıran ile Ara</a>
+      <a href="/bestiary.html" class="btn btn-ghost" data-i18n="error.btn.bestiary">Bestiary'i Aç</a>
     </div>
 
     <p class="error-hint">
-      Aradığın URL: <code id="missing-url"></code>
+      <span data-i18n="error.url">Aradığın URL:</span> <code id="missing-url"></code>
     </p>
   </section>
 </main>
@@ -74,10 +70,10 @@
   <div class="footer-cols">
     <div>
       <p class="brand-name small">InfectedLab</p>
-      <p class="footer-note">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
+      <p class="footer-note" data-i18n="footer.disclaimer">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
     </div>
     <div>
-      <p class="footer-head">Bağlantılar</p>
+      <p class="footer-head" data-i18n="footer.head.links">Bağlantılar</p>
       <ul>
         <li><a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="/bestiary.html">Bestiary</a></li>
@@ -85,8 +81,8 @@
       </ul>
     </div>
     <div>
-      <p class="footer-head">Damga</p>
-      <p class="footer-note">"Her zafer, bir sonraki demonu çağırır."</p>
+      <p class="footer-head" data-i18n="footer.head.brand">Damga</p>
+      <p class="footer-note" data-i18n="footer.brand.note">"Her zafer, bir sonraki demonu çağırır."</p>
     </div>
   </div>
   <p class="copyright">© <span id="year"></span> InfectedLab — Kara Süvari'nin Defteri</p>
@@ -97,6 +93,7 @@
   var u = document.getElementById("missing-url");
   if (u) u.textContent = location.pathname + location.search;
 </script>
+<script src="/assets/js/i18n.js"></script>
 <script src="/assets/js/main.js"></script>
 </body>
 </html>

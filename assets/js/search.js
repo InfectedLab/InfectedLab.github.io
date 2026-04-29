@@ -1,28 +1,41 @@
-/* InfectedLab - search.js
- * Lunr.js tabanlı istemci taraflı arama. data/posts.json üzerinde indeks kurar.
+/* InfectedLab - search.js (multi-lang)
+ * Lunr.js tabanlı istemci taraflı arama. data/posts.json üzerinden,
+ * her dil için ayrı bir indeks kurar; aktif dile göre query yürütür.
  */
 (function () {
   var input = document.getElementById("search-input");
   var status = document.getElementById("search-status");
   var results = document.getElementById("search-results");
 
-  var idx = null;
-  var docs = {};
-  var tagLabels = {};
+  var indexes = {};   // lang -> lunr.Index
+  var docs = {};      // slug -> post object
+  var rawData = null;
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" })[c];
     });
   }
-
   function tagColor(slug) {
     var palette = ["red", "violet", "bone"];
     var sum = 0;
     for (var i = 0; i < slug.length; i++) sum += slug.charCodeAt(i);
     return palette[sum % palette.length];
   }
-
+  function getLang() {
+    return (window.InfectedLabI18n && window.InfectedLabI18n.current()) || "tr";
+  }
+  function pick(field) {
+    var lang = getLang();
+    if (field == null) return "";
+    if (typeof field === "string") return field;
+    return field[lang] || field.tr || field.en || "";
+  }
+  function tT(key, vars) {
+    if (!window.InfectedLabI18n) return key;
+    var v = window.InfectedLabI18n.t(key, vars);
+    return v || key;
+  }
   function highlight(text, query) {
     if (!query) return escapeHtml(text);
     var safe = escapeHtml(text);
@@ -34,32 +47,36 @@
     return safe.replace(re, '<mark>$1</mark>');
   }
 
+  function buildLabelMap() {
+    var labels = {};
+    (rawData.tags || []).forEach(function (t) { labels[t.slug] = pick(t.label); });
+    return labels;
+  }
+
   function render(matches, query) {
     if (!matches.length) {
-      results.innerHTML = '<p class="empty-note">Bu sözcükle eşleşen bir damga bulunmadı. Başka bir kelimeyle dene.</p>';
+      results.innerHTML = '<p class="empty-note">' + escapeHtml(tT("search.empty")) + '</p>';
       return;
     }
+    var labels = buildLabelMap();
+    var readLabel = tT("card.read");
     results.innerHTML = matches.map(function (m) {
       var p = docs[m.ref];
       if (!p) return "";
       var tagHtml = (p.tags || []).slice(0, 3).map(function (t) {
         return '<a href="tags.html?t=' + encodeURIComponent(t) + '" class="tag tag-' + tagColor(t) + '">' +
-          escapeHtml(tagLabels[t] || t) + '</a>';
+          escapeHtml(labels[t] || t) + '</a>';
       }).join(" ");
       return '<article class="post-card">' +
         '<div class="post-card-meta">' + tagHtml + '<time>' + escapeHtml(p.date || "") + '</time></div>' +
-        '<h3><a href="' + escapeHtml(p.url) + '">' + highlight(p.title, query) + '</a></h3>' +
-        '<p>' + highlight(p.excerpt || "", query) + '</p>' +
-        '<a href="' + escapeHtml(p.url) + '" class="post-link">Defteri Aç →</a>' +
+        '<h3><a href="' + escapeHtml(p.url) + '">' + highlight(pick(p.title), query) + '</a></h3>' +
+        '<p>' + highlight(pick(p.excerpt) || "", query) + '</p>' +
+        '<a href="' + escapeHtml(p.url) + '" class="post-link">' + escapeHtml(readLabel) + '</a>' +
         '</article>';
     }).join("");
   }
 
-  function buildIndex(data) {
-    docs = {};
-    (data.tags || []).forEach(function (t) { tagLabels[t.slug] = t.label; });
-    data.posts.forEach(function (p) { docs[p.slug] = p; });
-
+  function buildIndexFor(lang) {
     return lunr(function () {
       this.ref("slug");
       this.field("title", { boost: 10 });
@@ -68,15 +85,26 @@
       this.field("berserk", { boost: 4 });
       this.field("category");
 
-      // Türkçe stemmer yok ama lunr stop-word listesi sorunsuz çalışır
-      data.posts.forEach(function (p) {
+      var labels = {};
+      (rawData.tags || []).forEach(function (t) {
+        labels[t.slug] = (t.label && (t.label[lang] || t.label.tr)) || t.slug;
+      });
+
+      rawData.posts.forEach(function (p) {
+        var title    = (typeof p.title === "string") ? p.title    : (p.title[lang]    || p.title.tr || "");
+        var excerpt  = (typeof p.excerpt === "string") ? p.excerpt : (p.excerpt[lang] || p.excerpt.tr || "");
+        var category = (typeof p.category === "string") ? p.category : (p.category && (p.category[lang] || p.category.tr)) || "";
+        // tags: hem slug hem aktif dil etiketi indekse
+        var tagText = (p.tags || []).map(function (t) {
+          return t + " " + (labels[t] || "");
+        }).join(" ");
         this.add({
           slug: p.slug,
-          title: p.title,
-          excerpt: p.excerpt,
-          tags: (p.tags || []).join(" "),
+          title: title,
+          excerpt: excerpt,
+          tags: tagText,
           berserk: p.berserk,
-          category: p.category
+          category: category
         });
       }, this);
     });
@@ -84,34 +112,37 @@
 
   function search(q) {
     q = (q || "").trim();
+    var lang = getLang();
+    var idx = indexes[lang];
+    if (!idx) {
+      // İndeksi tembelce kur
+      idx = indexes[lang] = buildIndexFor(lang);
+    }
     if (!q) {
-      // Boş arama: en yenileri göster
       var all = Object.keys(docs).map(function (k) { return { ref: k, score: 0 }; });
       all.sort(function (a, b) { return (docs[b.ref].date || "").localeCompare(docs[a.ref].date || ""); });
       render(all, "");
-      status.textContent = "Tüm makaleler — bir şey yazmaya başla.";
+      status.textContent = tT("search.status.all");
       return;
     }
     try {
-      // Wildcard ekleyerek "rans" → "ransomware" eşleşsin
-      var query = q.split(/\s+/).filter(Boolean).map(function (t) {
-        return t + "*";
-      }).join(" ");
+      var query = q.split(/\s+/).filter(Boolean).map(function (t) { return t + "*"; }).join(" ");
       var matches = idx.search(query);
       render(matches, q);
-      status.textContent = matches.length + " sonuç.";
+      status.textContent = tT("search.status.results", { n: matches.length });
     } catch (e) {
-      status.textContent = "Arama hatası: " + e.message;
+      status.textContent = tT("search.status.error", { e: e.message });
     }
   }
 
   fetch("data/posts.json", { cache: "no-cache" })
     .then(function (r) { return r.json(); })
     .then(function (data) {
-      idx = buildIndex(data);
+      rawData = data;
+      data.posts.forEach(function (p) { docs[p.slug] = p; });
+
       input.disabled = false;
       input.focus();
-      // ?q=... query string desteği
       var initial = (function () {
         var m = /[?&]q=([^&]+)/.exec(location.search);
         return m ? decodeURIComponent(m[1]) : "";
@@ -120,11 +151,16 @@
       search(input.value);
     })
     .catch(function (err) {
-      status.textContent = "İndeks yüklenemedi: " + err.message;
+      status.textContent = tT("search.status.error", { e: err.message });
     });
 
   input.addEventListener("input", function () { search(input.value); });
   input.addEventListener("keydown", function (e) {
     if (e.key === "Escape") { input.value = ""; search(""); }
+  });
+
+  // Dil değişince yeniden ara (placeholder + status + sonuç metinleri)
+  document.addEventListener("infectedlab:lang-changed", function () {
+    if (rawData) search(input.value);
   });
 })();
