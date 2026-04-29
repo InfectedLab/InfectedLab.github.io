@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Tutulma'da Kayboldun — InfectedLab</title>
+<meta name="description" content="Aradığın sayfa Tutulma'da kayboldu. InfectedLab.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="404 — Tutulma'da Kayboldun">
+<meta property="og:description" content="Aradığın sayfa Tutulma'da kayboldu. Damgan bir başka yere gitmiş.">
+<meta property="og:url" content="https://infectedlab.github.io/404.html">
+<meta property="og:image" content="https://infectedlab.github.io/assets/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0c">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="/" class="brand-link">
+      <span class="brand-mark">⚔</span>
+      <span class="brand-name">InfectedLab</span>
+    </a>
+    <p class="brand-sub">Kara Süvari'nin Saha Defteri</p>
+  </div>
+  <nav class="site-nav">
+    <a href="/index.html">Defter</a>
+    <a href="/about.html">Kara Süvari</a>
+    <a href="/bestiary.html">Bestiary</a>
+    <a href="/tags.html">Etiketler</a>
+    <a href="/search.html">Ara</a>
+    <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
+    <button id="armor-toggle" class="armor-btn" type="button" aria-label="Berserker zırhını giy/çıkar" title="Berserker Zırh">⛨</button>
+  </nav>
+</header>
+
+<main class="page">
+  <section class="error-hero">
+    <div class="error-glyph" aria-hidden="true">
+      <div class="brand-of-sacrifice"></div>
+    </div>
+
+    <p class="post-eyebrow">— Tutulma'nın gölgesinde —</p>
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Bu yol Tutulma'da kayboldu</h2>
+    <p class="error-lede">
+      Damgan bir başka yere işaret ediyor. Belki Behelit yanlış titredi,
+      belki Skull Knight kapıyı önünde kapadı. Ne olursa olsun bu koridorda
+      seni bekleyen bir Havari yok.
+    </p>
+
+    <div class="error-actions">
+      <a href="/" class="btn btn-primary">Deftere Dön</a>
+      <a href="/search.html" class="btn btn-ghost">Ejder Kıran ile Ara</a>
+      <a href="/bestiary.html" class="btn btn-ghost">Bestiary'i Aç</a>
+    </div>
+
+    <p class="error-hint">
+      Aradığın URL: <code id="missing-url"></code>
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <p class="brand-name small">InfectedLab</p>
+      <p class="footer-note">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
+    </div>
+    <div>
+      <p class="footer-head">Bağlantılar</p>
+      <ul>
+        <li><a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/bestiary.html">Bestiary</a></li>
+        <li><a href="/tags.html">Etiketler</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Damga</p>
+      <p class="footer-note">"Her zafer, bir sonraki demonu çağırır."</p>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> InfectedLab — Kara Süvari'nin Defteri</p>
+</footer>
+
+<script>
+  // Eksik URL'i göster
+  var u = document.getElementById("missing-url");
+  if (u) u.textContent = location.pathname + location.search;
+</script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

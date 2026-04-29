@@ -661,6 +661,233 @@ main { position: relative; z-index: 2; }
   margin: 0 auto;
 }
 
+/* ===== Armor toggle button ===== */
+.armor-btn {
+  background: transparent;
+  border: 1px solid rgba(214, 205, 181, 0.25);
+  color: var(--bone-dim);
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all .2s ease;
+  margin-left: 0.5rem;
+}
+.armor-btn:hover {
+  border-color: var(--blood-bright);
+  color: var(--blood-bright);
+  box-shadow: 0 0 12px rgba(196, 32, 42, 0.4);
+}
+.armor-btn.armor-on {
+  border-color: var(--blood-glow);
+  color: var(--blood-glow);
+  background: rgba(196, 32, 42, 0.18);
+  box-shadow: 0 0 18px rgba(255, 58, 58, 0.55);
+  animation: armor-pulse 1.6s ease-in-out infinite;
+}
+@keyframes armor-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(255, 58, 58, 0.45); }
+  50%      { box-shadow: 0 0 24px rgba(255, 58, 58, 0.85); }
+}
+
+/* ===== Berserker mode (yüksek kontrast / agresif kırmızı) ===== */
+body.berserker-mode {
+  --bone: #f5ecd0;
+  --parch: #ffffff;
+  --bone-dim: #d6cdb5;
+  --blood: #b3000c;
+  --blood-bright: #ff1a26;
+  --blood-glow: #ff4d4d;
+  --ink-0: #000000;
+  --ink-1: #060001;
+  --ink-2: #0e0103;
+}
+body.berserker-mode {
+  background:
+    radial-gradient(1400px 900px at 80% -10%, rgba(255, 26, 38, 0.32), transparent 60%),
+    radial-gradient(1100px 700px at -10% 110%, rgba(255, 26, 38, 0.22), transparent 60%),
+    linear-gradient(180deg, #000000 0%, #060001 100%);
+  filter: contrast(1.06) saturate(1.15);
+}
+body.berserker-mode .grain { opacity: 0.10; }
+body.berserker-mode .post-card,
+body.berserker-mode .beast {
+  border-color: rgba(255, 26, 38, 0.35);
+}
+body.berserker-mode .hero-title,
+body.berserker-mode .prose h1 {
+  text-shadow: 0 2px 0 #000, 0 0 40px rgba(255, 77, 77, 0.45);
+}
+body.berserker-mode .brand-mark { color: var(--blood-glow); }
+body.berserker-mode .btn-primary {
+  background: linear-gradient(180deg, var(--blood-bright), var(--blood));
+}
+
+/* ===== Tag cloud ===== */
+.tag-cloud {
+  max-width: var(--max-w);
+  margin: 0 auto 2rem;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+  justify-content: center;
+}
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  border: 1px solid rgba(214, 205, 181, 0.2);
+  color: var(--bone);
+  background: rgba(20, 20, 26, 0.6);
+  transition: all .2s ease;
+}
+.tag-chip:hover {
+  border-color: var(--blood-bright);
+  color: var(--blood-bright);
+}
+.tag-chip-active {
+  border-color: var(--blood-bright);
+  color: var(--parch);
+  background: linear-gradient(180deg, rgba(196, 32, 42, 0.45), rgba(139, 17, 23, 0.35));
+  box-shadow: 0 0 14px rgba(196, 32, 42, 0.4);
+}
+.tag-chip.tag-red:hover { border-color: var(--blood-bright); color: var(--blood-bright); }
+.tag-chip.tag-violet:hover { border-color: #b27ad0; color: #b27ad0; }
+.tag-chip.tag-bone:hover { border-color: var(--bone); color: var(--parch); }
+.tag-count {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1px 6px;
+  border-radius: 999px;
+  color: var(--bone-dim);
+}
+
+/* ===== Search ===== */
+.search-wrap {
+  max-width: var(--reading-w);
+  margin: 0 auto 2rem;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+#search-input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: var(--ink-1);
+  border: 1px solid rgba(214, 205, 181, 0.2);
+  border-left: 3px solid var(--blood-bright);
+  color: var(--parch);
+  font-family: var(--font-prose);
+  font-size: 1.1rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+#search-input:focus {
+  border-color: var(--blood-bright);
+  box-shadow: 0 0 0 3px rgba(196, 32, 42, 0.25);
+}
+.search-status {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--bone-dim);
+  margin: 0.6rem 0 0;
+}
+mark {
+  background: rgba(196, 32, 42, 0.35);
+  color: var(--parch);
+  padding: 0 2px;
+}
+
+/* ===== Empty / hint notes ===== */
+.empty-note {
+  max-width: var(--reading-w);
+  margin: 2rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  font-style: italic;
+  color: var(--bone-dim);
+  border: 1px dashed rgba(214, 205, 181, 0.2);
+}
+
+/* ===== IOC downloads ===== */
+.ioc-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+
+/* ===== Feed wrap (extra section on home) ===== */
+.feed-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* ===== 404 page ===== */
+.error-hero {
+  max-width: var(--reading-w);
+  margin: 2rem auto;
+  text-align: center;
+  position: relative;
+}
+.error-glyph {
+  height: 220px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+}
+.error-glyph .brand-of-sacrifice {
+  width: 200px;
+  height: 200px;
+}
+.error-code {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 10rem);
+  margin: 0;
+  line-height: 0.9;
+  color: var(--blood-bright);
+  text-shadow: 0 0 30px rgba(196, 32, 42, 0.5);
+  letter-spacing: 0.05em;
+}
+.error-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--parch);
+  margin: 0.3rem 0 1rem;
+}
+.error-lede {
+  font-family: var(--font-prose);
+  font-size: 1.15rem;
+  color: var(--bone);
+  font-style: italic;
+  max-width: 56ch;
+  margin: 0 auto 2rem;
+}
+.error-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+.error-hint {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--bone-dim);
+  word-break: break-all;
+}
+.error-hint code {
+  background: var(--ink-3);
+  padding: 0.2rem 0.5rem;
+  color: var(--blood-bright);
+  border: 1px solid rgba(214, 205, 181, 0.1);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 880px) {
   .hero { grid-template-columns: 1fr; text-align: left; }

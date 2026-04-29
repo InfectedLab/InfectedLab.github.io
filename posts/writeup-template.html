@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>[ÖRNEK ŞABLON] Otopsi: Bir Havari'nin Anatomisi — InfectedLab</title>
 <meta name="description" content="Bir malware örneğinin teknik otopsisi için kullanılan InfectedLab şablonu. Bu sayfayı kopyalayıp kendi analizinizi yazabilirsiniz.">
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Otopsi Şablonu: Bir Havari'nin Anatomisi — InfectedLab">
+<meta property="og:description" content="Bir malware örneğinin teknik otopsisi için kullanılan InfectedLab şablonu.">
+<meta property="og:url" content="https://infectedlab.github.io/posts/writeup-template.html">
+<meta property="og:site_name" content="InfectedLab">
+<meta property="og:image" content="https://infectedlab.github.io/assets/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="InfectedLab — Kara Süvari'nin Saha Defteri">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Otopsi Şablonu: Bir Havari'nin Anatomisi — InfectedLab">
+<meta name="twitter:description" content="Bir malware örneğinin teknik otopsisi için kullanılan InfectedLab şablonu.">
+<meta name="twitter:image" content="https://infectedlab.github.io/assets/og/og-image.png">
+<meta name="theme-color" content="#0a0a0c">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -25,7 +41,10 @@
     <a href="../index.html">Defter</a>
     <a href="../about.html">Kara Süvari</a>
     <a href="../bestiary.html">Bestiary</a>
+    <a href="../tags.html">Etiketler</a>
+    <a href="../search.html">Ara</a>
     <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
+    <button id="armor-toggle" class="armor-btn" type="button" aria-label="Berserker zırhını giy/çıkar" title="Berserker Zırh">⛨</button>
   </nav>
 </header>
 
@@ -206,6 +225,26 @@ tags: [attack.t1059.001, attack.t1218.011, berserk.behelit]</code></pre>
       Bu Havari nereden geldi, ne yapmaya çalıştı, hangi acıyı bıraktı?
       Bir paragraf. Sonraki olası sürüm için tahmin: hangi TTP'leri
       değiştirebilir, hangi imzalar kalıcıdır?
+    </p>
+
+    <h2>IX. Damgayı İndir</h2>
+    <p>
+      Bu otopsiden çıkan damgaları ekibinin TIP/EDR/SIEM'ine doğrudan
+      besleyebilirsin. İki format hazır bekliyor:
+    </p>
+    <div class="ioc-downloads">
+      <a href="../assets/ioc/writeup-template.yar" download class="btn btn-ghost">
+        ⚒ YARA kuralı (.yar)
+      </a>
+      <a href="../assets/ioc/writeup-template.stix.json" download class="btn btn-ghost">
+        ☩ STIX 2.1 bundle (.json)
+      </a>
+    </div>
+    <p class="footer-note" style="margin-top:0.6rem;">
+      <em>TLP: WHITE — kurgu / eğitim. Gerçek vakanı yazarken
+      <code>assets/ioc/&lt;slug&gt;.yar</code> ve
+      <code>assets/ioc/&lt;slug&gt;.stix.json</code> dosyaları yarat,
+      buradaki bağlantıları yenile.</em>
     </p>
 
     <p class="signoff">— Kara Süvari, [yer], [saat]. Defter kapanır.</p>

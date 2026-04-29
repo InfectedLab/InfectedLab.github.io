@@ -1,10 +1,38 @@
 /* InfectedLab - main.js
- * Hafif etkileşimler: yıl, kart hover ışığı, kod blokları için "kopyala" düğmesi.
+ * Hafif etkileşimler: yıl, kart hover ışığı, kod blokları için "kopyala" düğmesi,
+ * Berserker zırh modu (kalıcı yüksek-kontrast tema).
  */
 (function () {
   // Yıl
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
+
+  // ===== Berserker zırh modu =====
+  // Kullanıcının seçimini localStorage'da tutarız ki sayfa geçişlerinde kalıcı olsun.
+  var STORAGE_KEY = "infectedlab.armor";
+  function applyArmor(on) {
+    document.body.classList.toggle("berserker-mode", !!on);
+    var btn = document.getElementById("armor-toggle");
+    if (btn) {
+      btn.classList.toggle("armor-on", !!on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.title = on ? "Berserker Zırh: AÇIK" : "Berserker Zırh: KAPALI";
+    }
+  }
+  // Sayfa yüklenirken durumu uygula (FOUC azaltmak için inline yapılabilir, ama ilk
+  // renderdan hemen sonra çalıştığı için yeterli).
+  try {
+    applyArmor(localStorage.getItem(STORAGE_KEY) === "1");
+  } catch (e) {}
+
+  var armorBtn = document.getElementById("armor-toggle");
+  if (armorBtn) {
+    armorBtn.addEventListener("click", function () {
+      var on = !document.body.classList.contains("berserker-mode");
+      applyArmor(on);
+      try { localStorage.setItem(STORAGE_KEY, on ? "1" : "0"); } catch (e) {}
+    });
+  }
 
   // Post-card hover spotlight (parlama efekti)
   document.querySelectorAll(".post-card, .beast").forEach(function (card) {

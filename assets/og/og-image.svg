@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="InfectedLab — Kara Süvari'nin Saha Defteri">
+  <defs>
+    <radialGradient id="bgRedTop" cx="80%" cy="-10%" r="70%">
+      <stop offset="0%" stop-color="#8b1117" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#8b1117" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgVioletBot" cx="-10%" cy="110%" r="60%">
+      <stop offset="0%" stop-color="#5a2a6e" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#5a2a6e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="vignette" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050506"/>
+      <stop offset="100%" stop-color="#0a0a0c"/>
+    </linearGradient>
+    <radialGradient id="brandGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3a3a" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#c4202a" stop-opacity="0.0"/>
+    </radialGradient>
+    <pattern id="grain" patternUnits="userSpaceOnUse" width="160" height="160">
+      <filter id="n" x="0" y="0">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      </filter>
+      <rect width="160" height="160" filter="url(#n)" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#vignette)"/>
+  <rect width="1200" height="630" fill="url(#bgRedTop)"/>
+  <rect width="1200" height="630" fill="url(#bgVioletBot)"/>
+  <rect width="1200" height="630" fill="url(#grain)"/>
+
+  <!-- Decorative frame -->
+  <rect x="30" y="30" width="1140" height="570" fill="none" stroke="#d6cdb5" stroke-opacity="0.18"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#c4202a" stroke-opacity="0.35"/>
+
+  <!-- Brand of Sacrifice on right -->
+  <g transform="translate(950, 315)">
+    <circle r="180" fill="url(#brandGlow)"/>
+    <circle r="150" fill="none" stroke="#c4202a" stroke-opacity="0.55"/>
+    <circle r="120" fill="none" stroke="#c4202a" stroke-opacity="0.7" stroke-dasharray="6 6"/>
+    <!-- crossed slashes (stylized brand) -->
+    <g stroke="#ff3a3a" stroke-width="6" stroke-linecap="round" filter="drop-shadow(0 0 12px #c4202a)">
+      <line x1="-70" y1="-70" x2="70" y2="70"/>
+      <line x1="-70" y1="70" x2="70" y2="-70"/>
+      <line x1="0" y1="-90" x2="0" y2="90"/>
+      <line x1="-90" y1="0" x2="90" y2="0"/>
+    </g>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="80" y="170" font-family="Cinzel, 'Times New Roman', serif" font-size="22"
+        letter-spacing="6" fill="#c4202a" font-weight="700">— TUTULMA'NIN GÖLGESİNDE —</text>
+
+  <!-- Main title -->
+  <text x="80" y="280" font-family="Cinzel, 'Times New Roman', serif" font-size="84"
+        font-weight="900" fill="#ebe2c8" letter-spacing="2">InfectedLab</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="345" font-family="Cormorant Garamond, Georgia, serif" font-size="36"
+        font-style="italic" fill="#d6cdb5">Kara Süvari'nin Saha Defteri</text>
+
+  <!-- Lede -->
+  <text x="80" y="430" font-family="Cormorant Garamond, Georgia, serif" font-size="24"
+        fill="#a89e84">Bu dünya Havarilerle dolu.</text>
+  <text x="80" y="465" font-family="Cormorant Garamond, Georgia, serif" font-size="24"
+        fill="#a89e84">Her zararlı yazılım bir demondur,</text>
+  <text x="80" y="500" font-family="Cormorant Garamond, Georgia, serif" font-size="24"
+        fill="#a89e84">her saldırı bir kurban ritüeli.</text>
+
+  <!-- URL -->
+  <text x="80" y="570" font-family="JetBrains Mono, Consolas, monospace" font-size="20"
+        fill="#c4202a" letter-spacing="2">infectedlab.github.io</text>
+
+  <!-- Sword glyph -->
+  <text x="1110" y="80" font-family="serif" font-size="36" fill="#c4202a" text-anchor="end">⚔</text>
+</svg>

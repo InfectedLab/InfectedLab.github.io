@@ -1,0 +1,103 @@
+{
+  "_comment": "InfectedLab posts index. Yeni bir post eklediğinde buraya da kaydını ekle. Tag isimlerini ASCII-slug olarak yaz (turkce karakter yok).",
+  "posts": [
+    {
+      "slug": "eclipse-ransomware",
+      "url": "posts/eclipse-ransomware.html",
+      "title": "Tutulma: Fidye Yazılımının Kurban Ritüeli",
+      "excerpt": "Behelit titreşmeye başladığında geri dönüş yoktur. Ransomware operatörleri tıpkı Griffith gibi sadık ekibi sunağa çevirir. Modern fidye operasyonlarını Tutulma'nın beş aşamasıyla okuyan bir saha analizi.",
+      "date": "2026-04-22",
+      "category": "Tematik",
+      "tags": ["tutulma", "ransomware", "incident-response", "tematik"],
+      "berserk": "Eclipse"
+    },
+    {
+      "slug": "apostle-apt",
+      "url": "posts/apostle-apt.html",
+      "title": "Havariler: APT Gruplarının Anatomi Dersi",
+      "excerpt": "Bir Havari, sıradan bir demondan iki şeyle ayrılır: bir zamanlar insandı, ve bir zamanlar bir şeyi sevdi. APT aktörleri de aynı şekilde inşa edilir.",
+      "date": "2026-04-15",
+      "category": "Tematik",
+      "tags": ["havari", "apt", "threat-actor", "tematik"],
+      "berserk": "Apostle"
+    },
+    {
+      "slug": "behelit-phishing",
+      "url": "posts/behelit-phishing.html",
+      "title": "Behelit: Bir Tıklamanın Kapı Açtığı Yer",
+      "excerpt": "Kırmızı Behelit yere düştüğünde sıradan bir taş gibi görünür. Kullanıcının gözünde de oltalama bağlantısı sıradan bir e-postadır. Phishing zincirinin üç fazı.",
+      "date": "2026-04-08",
+      "category": "Tematik",
+      "tags": ["behelit", "phishing", "initial-access", "tematik"],
+      "berserk": "Behelit"
+    },
+    {
+      "slug": "god-hand-nation-state",
+      "url": "posts/god-hand-nation-state.html",
+      "title": "Tanrısal El: Devlet Destekli Beş Lord",
+      "excerpt": "Void, Slan, Ubik, Conrad, Femto. Causality'nin kendisi kadar görünmezler; çünkü çoğu zaman saldırının kendisi değil, saldırının zorunluluğudurlar. Nation-state aktörleri.",
+      "date": "2026-04-01",
+      "category": "Tematik",
+      "tags": ["god-hand", "nation-state", "apt", "tehdit-istihbarati", "tematik"],
+      "berserk": "God Hand"
+    },
+    {
+      "slug": "brand-of-sacrifice-ioc",
+      "url": "posts/brand-of-sacrifice-ioc.html",
+      "title": "Kurban Damgası: IOC'lerin Karanlık Mantığı",
+      "excerpt": "Boynundaki damga her gece kanar ve demonları çağırır. Bir IOC de tam olarak budur: avcının kurban olarak işaretlenmiş izi. Pyramid of Pain ve Sigma kuralları.",
+      "date": "2026-03-25",
+      "category": "Tematik",
+      "tags": ["damga", "ioc", "detection", "sigma", "yara", "tematik"],
+      "berserk": "Brand of Sacrifice"
+    },
+    {
+      "slug": "berserker-armor-edr",
+      "url": "posts/berserker-armor-edr.html",
+      "title": "Çılgın Zırh: EDR'nin Bedeli",
+      "excerpt": "Berserker Zırh, Guts'ı her demondan koruyabilir; ama her giydiğinde bir parça aklını yer. Agresif EDR/XDR yapılandırmalarının sınırı.",
+      "date": "2026-03-18",
+      "category": "Tematik",
+      "tags": ["berserker-armor", "edr", "xdr", "savunma", "tematik"],
+      "berserk": "Berserker Armor"
+    },
+    {
+      "slug": "writeup-template",
+      "url": "posts/writeup-template.html",
+      "title": "Otopsi Şablonu: Bir Havari'nin Anatomisi",
+      "excerpt": "Yeni bir malware analizi yazarken kullanılan iskelet: triage, IOC tablosu, process ağacı, statik/dinamik analiz, C2 protokolü, Sigma + YARA kuralları.",
+      "date": "2026-04-29",
+      "category": "Otopsi",
+      "tags": ["sablon", "writeup", "reverse-engineering", "otopsi"],
+      "berserk": "—"
+    }
+  ],
+  "tags": [
+    { "slug": "tematik", "label": "Tematik" },
+    { "slug": "otopsi", "label": "Otopsi" },
+    { "slug": "writeup", "label": "Writeup" },
+    { "slug": "reverse-engineering", "label": "Reverse Engineering" },
+    { "slug": "ransomware", "label": "Ransomware" },
+    { "slug": "phishing", "label": "Phishing" },
+    { "slug": "apt", "label": "APT" },
+    { "slug": "nation-state", "label": "Nation-State" },
+    { "slug": "ioc", "label": "IOC" },
+    { "slug": "sigma", "label": "Sigma" },
+    { "slug": "yara", "label": "YARA" },
+    { "slug": "detection", "label": "Detection" },
+    { "slug": "edr", "label": "EDR" },
+    { "slug": "xdr", "label": "XDR" },
+    { "slug": "savunma", "label": "Savunma" },
+    { "slug": "incident-response", "label": "Incident Response" },
+    { "slug": "initial-access", "label": "Initial Access" },
+    { "slug": "threat-actor", "label": "Threat Actor" },
+    { "slug": "tehdit-istihbarati", "label": "Tehdit İstihbaratı" },
+    { "slug": "tutulma", "label": "Tutulma (Eclipse)" },
+    { "slug": "havari", "label": "Havari (Apostle)" },
+    { "slug": "behelit", "label": "Behelit" },
+    { "slug": "god-hand", "label": "Tanrısal El" },
+    { "slug": "damga", "label": "Damga" },
+    { "slug": "berserker-armor", "label": "Çılgın Zırh" },
+    { "slug": "sablon", "label": "Şablon" }
+  ]
+}

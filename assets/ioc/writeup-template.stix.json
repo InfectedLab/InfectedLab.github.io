@@ -1,0 +1,80 @@
+{
+  "type": "bundle",
+  "id": "bundle--00000000-0000-0000-0000-000000000001",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--11111111-1111-1111-1111-111111111111",
+      "created": "2026-04-29T00:00:00.000Z",
+      "modified": "2026-04-29T00:00:00.000Z",
+      "name": "InfectedLab",
+      "identity_class": "organization",
+      "description": "Kara Süvari'nin Saha Defteri — Berserk temalı malware/RE blogu (kurgu)."
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--22222222-2222-2222-2222-222222222222",
+      "created_by_ref": "identity--11111111-1111-1111-1111-111111111111",
+      "created": "2026-04-29T00:00:00.000Z",
+      "modified": "2026-04-29T00:00:00.000Z",
+      "name": "Behelit Loader Stage 1 (template)",
+      "description": "InfectedLab writeup şablonundaki loader örneği. Gerçek vakanda hash, IP, domain ve mutex değerlerini değiştir.",
+      "indicator_types": ["malicious-activity"],
+      "pattern": "[file:hashes.'SHA-256' = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa']",
+      "pattern_type": "stix",
+      "valid_from": "2026-04-29T00:00:00.000Z",
+      "labels": ["loader", "behelit", "template"]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--33333333-3333-3333-3333-333333333333",
+      "created_by_ref": "identity--11111111-1111-1111-1111-111111111111",
+      "created": "2026-04-29T00:00:00.000Z",
+      "modified": "2026-04-29T00:00:00.000Z",
+      "name": "Behelit C2 domain (template)",
+      "pattern": "[domain-name:value = 'example-c2.tld']",
+      "pattern_type": "stix",
+      "valid_from": "2026-04-29T00:00:00.000Z",
+      "labels": ["c2", "behelit", "template"]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--44444444-4444-4444-4444-444444444444",
+      "created_by_ref": "identity--11111111-1111-1111-1111-111111111111",
+      "created": "2026-04-29T00:00:00.000Z",
+      "modified": "2026-04-29T00:00:00.000Z",
+      "name": "Behelit mutex (template)",
+      "pattern": "[mutex:name = 'Global\\\\Behelit-7B2A']",
+      "pattern_type": "stix",
+      "valid_from": "2026-04-29T00:00:00.000Z",
+      "labels": ["mutex", "behelit", "template"]
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--55555555-5555-5555-5555-555555555555",
+      "created_by_ref": "identity--11111111-1111-1111-1111-111111111111",
+      "created": "2026-04-29T00:00:00.000Z",
+      "modified": "2026-04-29T00:00:00.000Z",
+      "name": "Behelit (kurgu aile)",
+      "description": "Kurgu malware ailesi. InfectedLab eğitim örneği.",
+      "is_family": true,
+      "malware_types": ["loader"]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--66666666-6666-6666-6666-666666666666",
+      "created_by_ref": "identity--11111111-1111-1111-1111-111111111111",
+      "created": "2026-04-29T00:00:00.000Z",
+      "modified": "2026-04-29T00:00:00.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--22222222-2222-2222-2222-222222222222",
+      "target_ref": "malware--55555555-5555-5555-5555-555555555555"
+    }
+  ]
+}

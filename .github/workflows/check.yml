@@ -1,0 +1,72 @@
+name: Defter Sağlık Kontrolü
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  htmlhint:
+    name: HTML lint (htmlhint)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install htmlhint
+        run: npm install --no-save htmlhint@1.1.4
+
+      - name: Run htmlhint
+        run: npx htmlhint --config .htmlhintrc "**/*.html"
+
+  json-validate:
+    name: JSON / STIX doğrulama
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON files
+        run: |
+          set -e
+          fail=0
+          for f in $(find . -path ./node_modules -prune -o -name "*.json" -print); do
+            if ! python3 -c "import json,sys; json.load(open('$f'))" 2>/tmp/err; then
+              echo "❌ $f"
+              cat /tmp/err
+              fail=1
+            else
+              echo "✅ $f"
+            fi
+          done
+          exit $fail
+
+  linkcheck:
+    name: Ölü link avı (lychee)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --max-concurrency 8
+            --accept 200,206,301,302,403,429
+            --exclude-mail
+            --exclude "^https?://(localhost|127\.0\.0\.1)"
+            --exclude "infectedlab\.github\.io/(posts/2026-05|tags\.html\?)"
+            './**/*.html'
+            './**/*.md'
+          fail: true
+          token: ${{ secrets.GITHUB_TOKEN }}
