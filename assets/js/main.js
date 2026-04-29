@@ -7,6 +7,41 @@
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
+  // ===== Tema modu (Berserk / Operator) =====
+  // FOUC önleme zaten <head> içindeki inline script ile yapılır.
+  var THEME_KEY = "infectedlab.theme";
+  function applyTheme(name) {
+    var operator = (name === "operator");
+    if (operator) document.documentElement.setAttribute("data-theme", "operator");
+    else          document.documentElement.removeAttribute("data-theme");
+
+    var btn = document.getElementById("theme-toggle");
+    if (btn) {
+      btn.setAttribute("aria-pressed", operator ? "true" : "false");
+      var titleKey = operator ? "theme.toggle.title.operator" : "theme.toggle.title.berserk";
+      var v = window.InfectedLabI18n ? window.InfectedLabI18n.t(titleKey) : null;
+      if (v) btn.title = v;
+    }
+  }
+  // İlk yüklemede DOM'daki state'i sync et
+  applyTheme(document.documentElement.getAttribute("data-theme") === "operator" ? "operator" : "berserk");
+
+  var themeBtn = document.getElementById("theme-toggle");
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var isOperator = document.documentElement.getAttribute("data-theme") === "operator";
+      var next = isOperator ? "berserk" : "operator";
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+      applyTheme(next);
+    });
+  }
+
+  // i18n yüklenince title'ı yeniden uygula
+  document.addEventListener("infectedlab:lang-changed", function () {
+    var cur = document.documentElement.getAttribute("data-theme") === "operator" ? "operator" : "berserk";
+    applyTheme(cur);
+  });
+
   // ===== Berserker zırh modu =====
   // Kullanıcının seçimini localStorage'da tutarız ki sayfa geçişlerinde kalıcı olsun.
   var STORAGE_KEY = "infectedlab.armor";

@@ -20,6 +20,9 @@
 
   "armor.title.on":  { "tr": "Berserker Zırh: AÇIK",  "en": "Berserker Armor: ON",  "ja": "狂戦士の甲冑：オン" },
   "armor.title.off": { "tr": "Berserker Zırh: KAPALI","en": "Berserker Armor: OFF", "ja": "狂戦士の甲冑：オフ" },
+  "theme.toggle.title.berserk":  { "tr": "Operatör moduna geç",   "en": "Switch to Operator mode", "ja": "オペレーターモードへ切替" },
+  "theme.toggle.title.operator": { "tr": "Berserk moduna dön",    "en": "Switch to Berserk mode",  "ja": "ベルセルクモードへ戻る" },
+  "theme.aria.label":            { "tr": "Tema değiştir: Berserk ↔ Operatör", "en": "Toggle theme: Berserk ↔ Operator", "ja": "テーマ切替：ベルセルク ↔ オペレーター" },
   "lang.switch.label": { "tr": "Dil",     "en": "Language",  "ja": "言語" },
 
   "hero.eyebrow": {

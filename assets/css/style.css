@@ -661,6 +661,496 @@ main { position: relative; z-index: 2; }
   margin: 0 auto;
 }
 
+/* =========================================================
+   OPERATOR MODE — analist/SOC odaklı 2. tema
+   Tetikleyici: <html data-theme="operator">
+   ========================================================= */
+[data-theme="operator"] {
+  --ink-0: #0d1117;
+  --ink-1: #161b22;
+  --ink-2: #21262d;
+  --ink-3: #30363d;
+  --ink-4: #484f58;
+  --bone: #c9d1d9;
+  --bone-dim: #8b949e;
+  --parch: #f0f6fc;
+  --blood: #1f6feb;
+  --blood-bright: #58a6ff;
+  --blood-glow: #79c0ff;
+  --gold: #d29922;
+  --violet: #8957e5;
+  --steel: #6e7681;
+
+  --font-display: "Inter", "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+  --font-prose:   "Inter", "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+}
+
+[data-theme="operator"] body {
+  background: var(--ink-0);
+  color: var(--bone);
+  font-family: var(--font-prose);
+  font-size: 16px;
+  line-height: 1.65;
+  filter: none;
+}
+
+/* Süs öğelerini kaldır */
+[data-theme="operator"] .grain { display: none; }
+[data-theme="operator"] .brand-of-sacrifice,
+[data-theme="operator"] .hero-sigil { display: none !important; }
+[data-theme="operator"] .hero {
+  grid-template-columns: 1fr;
+  padding-top: clamp(2rem, 5vw, 4rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--ink-3);
+}
+
+/* Header — terminalize */
+[data-theme="operator"] .site-header {
+  border-bottom: 1px solid var(--ink-3);
+  background: var(--ink-1);
+  backdrop-filter: none;
+  padding: 0.85rem clamp(1rem, 4vw, 3rem);
+  align-items: center;
+}
+[data-theme="operator"] .brand-mark {
+  text-shadow: none;
+  color: var(--blood-bright);
+}
+[data-theme="operator"] .brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+[data-theme="operator"] .brand-sub {
+  font-style: normal;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  margin-top: 0.15rem;
+  margin-left: 1.85rem;
+  color: var(--bone-dim);
+}
+[data-theme="operator"] .site-nav {
+  font-family: var(--font-display);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  gap: 1.1rem;
+}
+[data-theme="operator"] .site-nav a {
+  color: var(--bone);
+  border: 0;
+  padding-bottom: 2px;
+  transition: color .15s ease, border-color .15s ease;
+}
+[data-theme="operator"] .site-nav a:hover,
+[data-theme="operator"] .site-nav a.active {
+  color: var(--blood-bright);
+  border-bottom: 2px solid var(--blood-bright);
+}
+
+/* Hero */
+[data-theme="operator"] .hero-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--blood-bright);
+}
+[data-theme="operator"] .hero-eyebrow::before {
+  content: "▸ ";
+  color: var(--blood-bright);
+}
+[data-theme="operator"] .hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  letter-spacing: -0.02em;
+  text-shadow: none;
+  color: var(--parch);
+  line-height: 1.1;
+}
+[data-theme="operator"] .hero-lede {
+  font-style: normal;
+  font-size: 1.05rem;
+  color: var(--bone);
+  max-width: 64ch;
+}
+
+/* Buttons */
+[data-theme="operator"] .btn {
+  font-family: var(--font-display);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.88rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+[data-theme="operator"] .btn-primary {
+  background: var(--blood-bright);
+  color: #0d1117;
+  border-color: var(--blood-bright);
+  box-shadow: none;
+}
+[data-theme="operator"] .btn-primary:hover {
+  background: var(--blood-glow);
+  border-color: var(--blood-glow);
+  filter: none;
+}
+[data-theme="operator"] .btn-ghost {
+  border-color: var(--ink-4);
+  color: var(--bone);
+}
+[data-theme="operator"] .btn-ghost:hover {
+  border-color: var(--blood-bright);
+  color: var(--blood-bright);
+}
+
+/* Section heads */
+[data-theme="operator"] .section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.5rem;
+}
+[data-theme="operator"] .section-head h2::after {
+  width: 32px;
+  height: 2px;
+  background: var(--blood-bright);
+  box-shadow: none;
+}
+[data-theme="operator"] .section-head p {
+  font-size: 0.95rem;
+  color: var(--bone-dim);
+}
+
+/* Cards — GitHub repo card hissi */
+[data-theme="operator"] .post-card {
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-radius: 8px;
+  padding: 1.4rem;
+  transition: border-color .15s ease, transform .15s ease;
+}
+[data-theme="operator"] .post-card:hover {
+  border-color: var(--blood-bright);
+  transform: none;
+  box-shadow: none;
+  background: var(--ink-1) !important;
+}
+[data-theme="operator"] .post-card::before { display: none; }
+[data-theme="operator"] .post-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+[data-theme="operator"] .post-card h3 a:hover { color: var(--blood-bright); }
+[data-theme="operator"] .post-card p {
+  font-size: 0.92rem;
+  color: var(--bone-dim);
+}
+[data-theme="operator"] .post-card-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+}
+[data-theme="operator"] .post-link {
+  font-family: var(--font-display);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.85rem;
+  color: var(--blood-bright);
+  font-weight: 600;
+}
+
+/* Tags as GitHub labels */
+[data-theme="operator"] .tag {
+  font-family: var(--font-display);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.72rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+[data-theme="operator"] .tag-red    { color: var(--blood-bright); border-color: var(--blood-bright); }
+[data-theme="operator"] .tag-bone   { color: var(--bone);         border-color: var(--bone-dim); }
+[data-theme="operator"] .tag-violet { color: #b392f0;             border-color: #6e40c9; }
+
+[data-theme="operator"] .tag-chip {
+  text-transform: none;
+  letter-spacing: 0;
+  border-radius: 999px;
+  background: var(--ink-1);
+  border-color: var(--ink-3);
+  font-weight: 500;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.8rem;
+}
+[data-theme="operator"] .tag-chip-active {
+  background: var(--blood);
+  border-color: var(--blood-bright);
+  box-shadow: none;
+  color: var(--parch);
+}
+[data-theme="operator"] .tag-count {
+  background: var(--ink-3);
+  color: var(--bone);
+}
+
+/* Search input */
+[data-theme="operator"] #search-input {
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-left: 1px solid var(--ink-3);
+  border-radius: 6px;
+  font-family: "JetBrains Mono", monospace;
+}
+[data-theme="operator"] #search-input:focus {
+  border-color: var(--blood-bright);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.18);
+}
+[data-theme="operator"] mark {
+  background: rgba(88, 166, 255, 0.28);
+  color: var(--parch);
+}
+
+/* Quote block */
+[data-theme="operator"] .quote {
+  border: 1px solid var(--ink-3);
+  border-radius: 8px;
+  background: var(--ink-1);
+  margin: 3rem auto;
+  padding: 2rem;
+}
+[data-theme="operator"] .quote blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+/* Prose (post body) */
+[data-theme="operator"] .prose h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  letter-spacing: -0.02em;
+}
+[data-theme="operator"] .prose h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+  padding-left: 0;
+  margin-top: 2.2rem;
+}
+[data-theme="operator"] .prose h2::before { display: none; }
+[data-theme="operator"] .prose h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+[data-theme="operator"] .prose .lede {
+  font-style: normal;
+  font-size: 1.1rem;
+  color: var(--bone);
+  border-left: 3px solid var(--blood-bright);
+  padding-left: 1rem;
+  margin-left: 0;
+}
+[data-theme="operator"] .prose code {
+  background: var(--ink-2);
+  border-color: var(--ink-3);
+  color: #ff7b72;
+  border-radius: 3px;
+}
+[data-theme="operator"] .prose pre {
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-left: 1px solid var(--ink-3);
+  border-radius: 6px;
+}
+[data-theme="operator"] .codeblock {
+  border: 1px solid var(--ink-3);
+  border-left: 1px solid var(--ink-3);
+  border-radius: 6px;
+}
+[data-theme="operator"] .codeblock-head {
+  background: var(--ink-2);
+  border-bottom-color: var(--ink-3);
+}
+[data-theme="operator"] .codeblock-head .lang {
+  text-transform: lowercase;
+  letter-spacing: 0;
+  color: var(--blood-bright);
+}
+[data-theme="operator"] .prose blockquote {
+  border-left-color: var(--ink-4);
+  background: var(--ink-1);
+  border-radius: 0 6px 6px 0;
+  font-style: normal;
+  color: var(--bone);
+}
+
+/* Vow list — numaralı kart */
+[data-theme="operator"] .vow-list li {
+  background: var(--ink-1);
+  border-left-color: var(--blood-bright);
+  border-radius: 0 6px 6px 0;
+}
+[data-theme="operator"] .vow-list li::before {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--blood-bright);
+}
+
+/* Bestiary */
+[data-theme="operator"] .beast {
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-radius: 8px;
+}
+[data-theme="operator"] .beast:hover {
+  transform: none;
+  border-color: var(--blood-bright);
+}
+[data-theme="operator"] .beast h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+[data-theme="operator"] .beast-mark { filter: none; color: var(--blood-bright); }
+[data-theme="operator"] .beast-tag {
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--blood-bright);
+  font-weight: 500;
+}
+
+/* IOC table */
+[data-theme="operator"] .ioc-table {
+  border-radius: 6px;
+  overflow: hidden;
+}
+[data-theme="operator"] .ioc-table th {
+  font-family: var(--font-display);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--blood-bright);
+  background: var(--ink-2);
+}
+[data-theme="operator"] .ioc-table th, [data-theme="operator"] .ioc-table td {
+  border-color: var(--ink-3);
+}
+
+/* Footer */
+[data-theme="operator"] .site-footer {
+  background: var(--ink-1);
+  border-top: 1px solid var(--ink-3);
+}
+[data-theme="operator"] .footer-head {
+  font-family: var(--font-display);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--blood-bright);
+}
+
+/* 404 */
+[data-theme="operator"] .error-glyph { display: none; }
+[data-theme="operator"] .error-code {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--blood-bright);
+  text-shadow: none;
+}
+[data-theme="operator"] .error-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+[data-theme="operator"] .error-lede {
+  font-style: normal;
+}
+[data-theme="operator"] .error-hint code {
+  background: var(--ink-2);
+  border-color: var(--ink-3);
+  color: var(--blood-bright);
+  border-radius: 3px;
+}
+
+/* Armor button — operator modunda da çalışsın ama tonu uyum */
+[data-theme="operator"] .armor-btn {
+  border-color: var(--ink-3);
+  color: var(--bone-dim);
+  border-radius: 6px;
+}
+[data-theme="operator"] .armor-btn:hover {
+  border-color: var(--blood-bright);
+  color: var(--blood-bright);
+  box-shadow: none;
+}
+[data-theme="operator"] .armor-btn.armor-on {
+  border-color: var(--blood-bright);
+  color: var(--blood-bright);
+  background: rgba(88, 166, 255, 0.18);
+  box-shadow: none;
+  animation: none;
+}
+
+/* Section head — center variant for bestiary */
+[data-theme="operator"] .section-head-center { text-align: left; }
+[data-theme="operator"] .section-head-center h1::after,
+[data-theme="operator"] .section-head-center h2::after {
+  left: 0;
+  transform: none;
+}
+
+/* Berserker (kırmızı) modu, Operator temasında devre dışı renk dönüşümü
+   yapmasın — Operator'ün mavi kontrastı korunsun. Animasyonu da bastır. */
+[data-theme="operator"] body.berserker-mode {
+  --blood-bright: #ff7b72;
+  --blood-glow:   #ffa198;
+  filter: contrast(1.04);
+}
+
+/* ===== Theme toggle button ===== */
+.theme-btn {
+  background: transparent;
+  border: 1px solid rgba(214, 205, 181, 0.25);
+  color: var(--bone-dim);
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  transition: all .2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-btn::before { content: "[>_]"; }
+[data-theme="operator"] .theme-btn::before { content: "⚔"; font-size: 1rem; font-weight: 400; }
+.theme-btn:hover {
+  border-color: var(--blood-bright);
+  color: var(--blood-bright);
+}
+[data-theme="operator"] .theme-btn {
+  border-color: var(--ink-3);
+  border-radius: 6px;
+}
+
 /* ===== Language switcher ===== */
 .lang-switch {
   display: inline-flex;
