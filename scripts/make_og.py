@@ -1,5 +1,5 @@
 """
-InfectedLab — OG image generator.
+The Black Forge — OG image generator.
 Pillow ile 1200x630 boyutunda Berserk temalı social card üretir.
 
 Kullanım:
@@ -122,7 +122,7 @@ def main():
     img.alpha_composite(radial_overlay((W, H), int(W * -0.1), int(H * 1.1), 100, 600, VIOLET, 90))
 
     # Sağda Damga
-    draw_brand(img, int(W * 0.78), int(H * 0.50), size=360)
+    draw_brand(img, int(W * 0.85), int(H * 0.50), size=300)
 
     d = ImageDraw.Draw(img)
 
@@ -132,25 +132,26 @@ def main():
 
     # Eyebrow
     f_eye = load_font(22, bold=True)
-    d.text((80, 150), "— TUTULMA'NIN GÖLGESİNDE —", font=f_eye, fill=BLOOD_B)
+    d.text((80, 140), "— TUTULMA'NIN GÖLGESİNDE —", font=f_eye, fill=BLOOD_B)
 
-    # Başlık
-    f_title = load_font(96, bold=True)
-    d.text((80, 200), "InfectedLab", font=f_title, fill=PARCH)
+    # Başlık (iki satır halinde)
+    f_title_small = load_font(50, bold=True)
+    f_title_big   = load_font(96, bold=True)
+    d.text((80, 180), "THE", font=f_title_small, fill=PARCH)
+    d.text((80, 240), "BLACK FORGE", font=f_title_big, fill=PARCH)
 
     # Alt başlık
-    f_sub = load_font(36, italic=True)
-    d.text((80, 320), "Kara Süvari'nin Saha Defteri", font=f_sub, fill=BONE)
+    f_sub = load_font(34, italic=True)
+    d.text((80, 380), "Demonları kurala dönüştüren atölye", font=f_sub, fill=BONE)
 
     # Lede
-    f_lede = load_font(24)
-    d.text((80, 410), "Bu dünya Havarilerle dolu.", font=f_lede, fill=BONE_DIM)
-    d.text((80, 445), "Her zararlı yazılım bir demondur,", font=f_lede, fill=BONE_DIM)
-    d.text((80, 480), "her saldırı bir kurban ritüeli.", font=f_lede, fill=BONE_DIM)
+    f_lede = load_font(22)
+    d.text((80, 450), "Where demons become detections.", font=f_lede, fill=BONE_DIM)
+    d.text((80, 480), "Berserk demonolojisiyle yazılmış malware analizi defteri.", font=f_lede, fill=BONE_DIM)
 
     # URL
     f_url = load_font(20, bold=True)
-    d.text((80, 560), "infectedlab.github.io", font=f_url, fill=BLOOD_B)
+    d.text((80, 560), "infectedlab.com", font=f_url, fill=BLOOD_B)
 
     # Kılıç işareti köşede
     f_glyph = load_font(40, bold=True)

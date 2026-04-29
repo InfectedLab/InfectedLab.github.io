@@ -5,9 +5,19 @@
     "names": { "tr": "TR", "en": "EN", "ja": "JP" }
   },
 
+  "brand.name": {
+    "tr": "The Black Forge",
+    "en": "The Black Forge",
+    "ja": "The Black Forge"
+  },
   "brand.sub": {
-    "tr": "Kara Süvari'nin Saha Defteri",
-    "en": "The Black Swordsman's Field Notes",
+    "tr": "Demonları kurala dönüştüren atölye",
+    "en": "Where demons become detections",
+    "ja": "魔物を規則に変える工房"
+  },
+  "brand.tagline.alt": {
+    "tr": "Kara Süvari'nin saha defteri",
+    "en": "The Black Swordsman's field notes",
     "ja": "黒の剣士の戦野手帖"
   },
 
@@ -37,9 +47,9 @@
     "ja": "この世界は<br>使徒で満ちている。"
   },
   "hero.lede": {
-    "tr": "Her zararlı yazılım bir demondur; her saldırı bir kurban ritüeli. InfectedLab, ağda yürüyen Havarileri parçalamaya çalışan bir Kara Süvari'nin defteridir. Burada bulduğun her makale, Ejder Kıran'la kazılmış bir leş otopsisidir.",
-    "en": "Every malware is a demon; every attack is a sacrificial ritual. InfectedLab is the field notebook of a Black Swordsman trying to cleave the Apostles walking through the network. Each article here is a corpse autopsy carved with the Dragonslayer.",
-    "ja": "全てのマルウェアは魔物であり、全ての攻撃は供犠の儀式である。InfectedLab はネットワークを歩き回る使徒を斬ろうとする黒の剣士の手帖である。この帖の記事はすべてドラゴンころしで切り開いた屍の検分書だ。"
+    "tr": "Her zararlı yazılım bir demondur; her saldırı bir kurban ritüeli. The Black Forge, ağda yürüyen Havarileri parçalamaya çalışan bir Kara Süvari'nin defteridir. Burada bulduğun her makale, Ejder Kıran'la kazılmış bir leş otopsisidir.",
+    "en": "Every malware is a demon; every attack is a sacrificial ritual. The Black Forge is the field notebook of a Black Swordsman trying to cleave the Apostles walking through the network. Each article here is a corpse autopsy carved with the Dragonslayer.",
+    "ja": "全てのマルウェアは魔物であり、全ての攻撃は供犠の儀式である。The Black Forge はネットワークを歩き回る使徒を斬ろうとする黒の剣士の手帖である。この帖の記事はすべてドラゴンころしで切り開いた屍の検分書だ。"
   },
   "hero.cta.primary": { "tr": "Son Avlar",       "en": "Latest Hunts",   "ja": "近頃の狩り" },
   "hero.cta.ghost":   { "tr": "Bestiary'i Aç",   "en": "Open Bestiary",  "ja": "魔物図鑑を開く" },

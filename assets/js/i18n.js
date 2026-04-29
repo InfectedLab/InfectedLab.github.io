@@ -1,4 +1,4 @@
-/* InfectedLab — i18n.js
+/* The Black Forge — i18n.js
  * Hafif istemci-taraflı çoklu dil:
  *   data-i18n="key"          : textContent
  *   data-i18n-html="key"     : innerHTML (örn. <br> içeren string'ler)
@@ -147,7 +147,7 @@
   }
 
   // Public API
-  window.InfectedLabI18n = {
+  window.BlackForgeI18n = {
     t: function (key, vars) {
       var v = t(key, current);
       return vars ? format(v, vars) : v;
@@ -177,6 +177,6 @@
     .catch(function (err) {
       // Yine de switcher'ı kurup mevcut DOM'u bırak
       buildSwitcher();
-      console.warn("[InfectedLab i18n] strings.json yüklenemedi:", err);
+      console.warn("[BlackForge i18n] strings.json yüklenemedi:", err);
     });
 })();

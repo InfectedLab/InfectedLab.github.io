@@ -1,5 +1,5 @@
 /*
- * InfectedLab — Writeup Template YARA stub
+ * The Black Forge — Writeup Template YARA stub
  * URL: https://infectedlab.github.io/posts/writeup-template.html
  * Bu dosya bir şablondur. Yeni bir otopsi yazdığında posts/<slug>/<slug>.yar
  * şeklinde kopyalayıp ilgili stringleri ve hash'leri doldur.
@@ -7,10 +7,10 @@
 
 import "hash"
 
-rule InfectedLab_Behelit_Loader_Template
+rule The Black Forge_Behelit_Loader_Template
 {
     meta:
-        author      = "Kara Süvari (InfectedLab)"
+        author      = "Kara Süvari (The Black Forge)"
         description = "Behelit-7B2A loader (Stage 1) — kurgu/şablon"
         date        = "2026-04-29"
         family      = "Behelit"

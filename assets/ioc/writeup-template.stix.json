@@ -8,7 +8,7 @@
       "id": "identity--11111111-1111-1111-1111-111111111111",
       "created": "2026-04-29T00:00:00.000Z",
       "modified": "2026-04-29T00:00:00.000Z",
-      "name": "InfectedLab",
+      "name": "The Black Forge",
       "identity_class": "organization",
       "description": "Kara Süvari'nin Saha Defteri — Berserk temalı malware/RE blogu (kurgu)."
     },
@@ -20,7 +20,7 @@
       "created": "2026-04-29T00:00:00.000Z",
       "modified": "2026-04-29T00:00:00.000Z",
       "name": "Behelit Loader Stage 1 (template)",
-      "description": "InfectedLab writeup şablonundaki loader örneği. Gerçek vakanda hash, IP, domain ve mutex değerlerini değiştir.",
+      "description": "The Black Forge writeup şablonundaki loader örneği. Gerçek vakanda hash, IP, domain ve mutex değerlerini değiştir.",
       "indicator_types": ["malicious-activity"],
       "pattern": "[file:hashes.'SHA-256' = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa']",
       "pattern_type": "stix",
@@ -61,7 +61,7 @@
       "created": "2026-04-29T00:00:00.000Z",
       "modified": "2026-04-29T00:00:00.000Z",
       "name": "Behelit (kurgu aile)",
-      "description": "Kurgu malware ailesi. InfectedLab eğitim örneği.",
+      "description": "Kurgu malware ailesi. The Black Forge eğitim örneği.",
       "is_family": true,
       "malware_types": ["loader"]
     },

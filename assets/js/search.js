@@ -1,4 +1,4 @@
-/* InfectedLab - search.js (multi-lang)
+/* The Black Forge - search.js (multi-lang)
  * Lunr.js tabanlı istemci taraflı arama. data/posts.json üzerinden,
  * her dil için ayrı bir indeks kurar; aktif dile göre query yürütür.
  */
@@ -23,7 +23,7 @@
     return palette[sum % palette.length];
   }
   function getLang() {
-    return (window.InfectedLabI18n && window.InfectedLabI18n.current()) || "tr";
+    return (window.BlackForgeI18n && window.BlackForgeI18n.current()) || "tr";
   }
   function pick(field) {
     var lang = getLang();
@@ -32,8 +32,8 @@
     return field[lang] || field.tr || field.en || "";
   }
   function tT(key, vars) {
-    if (!window.InfectedLabI18n) return key;
-    var v = window.InfectedLabI18n.t(key, vars);
+    if (!window.BlackForgeI18n) return key;
+    var v = window.BlackForgeI18n.t(key, vars);
     return v || key;
   }
   function highlight(text, query) {

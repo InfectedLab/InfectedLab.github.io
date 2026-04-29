@@ -1,4 +1,4 @@
-/* InfectedLab - main.js
+/* The Black Forge - main.js
  * Hafif etkileşimler: yıl, kart hover ışığı, kod blokları için "kopyala" düğmesi,
  * Berserker zırh modu (kalıcı yüksek-kontrast tema).
  */
@@ -19,7 +19,7 @@
     if (btn) {
       btn.setAttribute("aria-pressed", operator ? "true" : "false");
       var titleKey = operator ? "theme.toggle.title.operator" : "theme.toggle.title.berserk";
-      var v = window.InfectedLabI18n ? window.InfectedLabI18n.t(titleKey) : null;
+      var v = window.BlackForgeI18n ? window.BlackForgeI18n.t(titleKey) : null;
       if (v) btn.title = v;
     }
   }

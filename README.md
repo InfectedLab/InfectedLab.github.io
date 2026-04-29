@@ -1,4 +1,4 @@
-# InfectedLab — Kara Süvari'nin Saha Defteri
+# The Black Forge — Kara Süvari'nin Saha Defteri
 
 Berserk evreni temalı bir malware analizi & reverse engineering blogu.
 Zararlı yazılımlar burada Havari, saldırı zincirleri Tutulma, IOC'ler
@@ -11,7 +11,7 @@ olarak yayınlanır — Jekyll, build, derleyici yok.
 ## Yapı
 
 ```
-InfectedLab/
+The Black Forge/
 ├── index.html                      # Ana sayfa
 ├── about.html                      # Kara Süvari hakkında
 ├── bestiary.html                   # Berserk ↔ siber tehdit eşleme tablosu
