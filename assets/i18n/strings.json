@@ -69,11 +69,6 @@
     "en": "\"A man can run, hide, or weep. But sooner or later he must lift the sword.\"",
     "ja": "「人は逃げ、隠れ、泣くことができる。だが、いつかは剣を持ち上げねばならない。」"
   },
-  "quote.cite": {
-    "tr": "— Kara Süvari'nin saha kuralı",
-    "en": "— Field rule of the Black Swordsman",
-    "ja": "—黒の剣士の戦野の掟"
-  },
 
   "writeups.head.title": { "tr": "Otopsiler — Reverse Engineering", "en": "Autopsies — Reverse Engineering", "ja": "検分 — リバースエンジニアリング" },
   "writeups.head.sub":   { "tr": "Sahadan toplanan demon leşlerinin ayrıntılı kesimi. Hash, asm, IOC, kural.",
