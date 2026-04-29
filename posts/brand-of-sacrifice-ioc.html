@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurban Damgası: IOC'lerin Karanlık Mantığı — InfectedLab</title>
+<meta name="description" content="IOC ve detection engineering'i Berserk'in Brand of Sacrifice metaforu üzerinden okuyan saha analizi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="../index.html" class="brand-link">
+      <span class="brand-mark">⚔</span>
+      <span class="brand-name">InfectedLab</span>
+    </a>
+    <p class="brand-sub">Kara Süvari'nin Saha Defteri</p>
+  </div>
+  <nav class="site-nav">
+    <a href="../index.html">Defter</a>
+    <a href="../about.html">Kara Süvari</a>
+    <a href="../bestiary.html">Bestiary</a>
+    <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="page">
+  <article class="prose">
+    <p class="post-eyebrow">— Saha defteri / 25 Mart 2026 —</p>
+    <h1>Kurban Damgası: IOC'lerin Karanlık Mantığı</h1>
+    <p class="lede">
+      Boynunda bir damga var. Her gece kanar. Damga oradayken demonlar seni
+      görür ve gelir. Damgayı çıkaramazsın. Ama Guts gibi, onu pusulaya
+      çevirebilirsin.
+    </p>
+
+    <h2>Damga Nedir?</h2>
+    <p>
+      <strong>IOC (Indicator of Compromise)</strong>, bir kurbanın üzerine
+      bırakılmış izdir. Bir hash, bir IP, bir mutex, bir registry anahtarı,
+      bir kullanıcı-ajan dizgesi. Saldırgan onu bilerek bırakmaz; orada
+      kalmıştır çünkü <em>operasyonun maliyeti</em>nde geriye kalandır.
+    </p>
+    <p>
+      Damga gibi: kimse seni damgalamak için kalmamıştır; damga yalnızca
+      ritüelin bir tortusudur. Ama o tortu, demon için artık seni nereden
+      bulacağını söyler.
+    </p>
+
+    <h2>Damgaların Hiyerarşisi — Pyramid of Pain</h2>
+    <p>
+      Tüm damgalar eşit acı vermez. David Bianco'nun <em>Pyramid of Pain</em>
+      şemasını Berserk evrenine taşıyalım:
+    </p>
+
+    <table class="ioc-table">
+      <thead>
+        <tr><th>Katman</th><th>Damga</th><th>Saldırgana acı</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1. Hash</td><td>MD5/SHA1/SHA256</td><td>Önemsiz — yeniden derler</td></tr>
+        <tr><td>2. IP</td><td>C2 IP'si</td><td>Düşük — yeni IP kiralar</td></tr>
+        <tr><td>3. Domain</td><td>FQDN</td><td>Orta — yeni domain pahalıdır</td></tr>
+        <tr><td>4. Network/Host artefaktı</td><td>UA, mutex, named pipe</td><td>Yüksek — kod değişikliği gerek</td></tr>
+        <tr><td>5. Tool</td><td>Cobalt Strike profili, custom loader</td><td>Çok yüksek — toolchain değişir</td></tr>
+        <tr><td>6. TTP</td><td>MITRE tekniği</td><td>Maksimum — operatörün davranışıdır</td></tr>
+      </tbody>
+    </table>
+
+    <p>
+      Hash bloğu, demonun saçından bir tel kesmek gibidir; demon güler.
+      TTP'yi engellemekse zırhının altındaki sinire dokunmaktır.
+    </p>
+
+    <h2>Damgayı Pusulaya Çevirmek</h2>
+    <p>
+      Guts, damgayla yaşamayı öğrendi. Bunu yaparken üç şey yaptı:
+    </p>
+    <ol>
+      <li>
+        <strong>Damgayı sakladı.</strong> Sürekli görmek
+        deli ediyordu; gerektiğinde baktı. Bir SOC analisti de IOC'yi
+        ezberlemez, sorgulanabilir bir TIP / OpenCTI deposunda tutar.
+      </li>
+      <li>
+        <strong>Damganın <em>ne zaman</em> kanadığına dikkat etti.</strong>
+        Demon yaklaştığında damga ısınırdı. Bir alarm, IOC eşleşince değil,
+        eşleşme + bağlam (kullanıcı, saat, süreç ağacı) anlamlı olduğunda
+        ateşlenmelidir.
+      </li>
+      <li>
+        <strong>Damgayı silmeye çalışmadı.</strong> Tehdit avcılığında en
+        büyük yanılgı IOC listelerini "temizlemek"tir. Eski IOC, yeni saldırı
+        zincirinin <em>başlangıcı</em> olabilir. Sadece ağırlıklarını düşür,
+        atma.
+      </li>
+    </ol>
+
+    <h2>Damga ile Yazılan Kural — Sigma Örneği</h2>
+    <div class="codeblock">
+      <div class="codeblock-head">
+        <span class="file">brand_of_sacrifice.yml</span>
+        <span class="lang">Sigma</span>
+      </div>
+<pre><code>title: Behelit Çağrısı — LNK + PowerShell IEX
+id: 8b110017-c420-2a00-bone-defter000001
+status: experimental
+description: Explorer altından LNK kanalıyla başlatılan PowerShell + IEX kombinasyonu.
+author: Kara Süvari (InfectedLab)
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    ParentImage|endswith: '\explorer.exe'
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains|all:
+      - 'iex'
+      - 'http'
+  filter_signed:
+    CommandLine|contains: 'Microsoft.PowerShell.Operation.Validation'
+  condition: selection and not filter_signed
+level: high
+tags:
+  - attack.execution
+  - attack.t1059.001
+  - berserk.behelit</code></pre>
+    </div>
+
+    <h2>Damga Paylaşmak — STIX/TAXII</h2>
+    <p>
+      Bir Kara Süvari tek başına yürür ama tek başına ölmek istemez.
+      İyi bir IOC, paylaşılırsa iyi bir IOC'dir. STIX 2.1 formatında bir
+      "indicator" objesi, TAXII üzerinden bir ISAC'a düşer ve aynı gece
+      üç başka kuruluş daha kurtulur. Damga, paylaşıldıkça acıyı azaltır.
+    </p>
+
+    <p class="signoff">— Kara Süvari, gömleği açık, omzunda kuruyan kan, defterde altı kural.</p>
+
+    <nav class="post-nav">
+      <a href="god-hand-nation-state.html" class="btn btn-ghost">← Önceki: Tanrısal El</a>
+      <a href="berserker-armor-edr.html" class="btn btn-primary">Sonraki: Çılgın Zırh →</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <p class="brand-name small">InfectedLab</p>
+      <p class="footer-note">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
+    </div>
+    <div>
+      <p class="footer-head">Bağlantılar</p>
+      <ul>
+        <li><a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="../bestiary.html">Bestiary</a></li>
+        <li><a href="../about.html">Kara Süvari Hakkında</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Damga</p>
+      <p class="footer-note">"Her zafer, bir sonraki demonu çağırır."</p>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> InfectedLab — Kara Süvari'nin Defteri</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutulma: Fidye Yazılımının Kurban Ritüeli — InfectedLab</title>
+<meta name="description" content="Modern fidye operasyonlarını Berserk'in Eclipse sahnesi üzerinden okuyan bir saha analizi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="../index.html" class="brand-link">
+      <span class="brand-mark">⚔</span>
+      <span class="brand-name">InfectedLab</span>
+    </a>
+    <p class="brand-sub">Kara Süvari'nin Saha Defteri</p>
+  </div>
+  <nav class="site-nav">
+    <a href="../index.html">Defter</a>
+    <a href="../about.html">Kara Süvari</a>
+    <a href="../bestiary.html">Bestiary</a>
+    <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="page">
+  <article class="prose">
+    <p class="post-eyebrow">— Saha defteri / 22 Nisan 2026 —</p>
+    <h1>Tutulma: Fidye Yazılımının Kurban Ritüeli</h1>
+    <p class="lede">
+      Behelit titreşmeye başladığında geri dönüş yoktur. Gökyüzü yarılır,
+      yer kıvrılır, ve dün sadık olan herkes sunağa dizilmiş bulur kendini.
+      Modern fidye operasyonları da aynı dramatik mantığı izler. Bu yazı,
+      bir ransomware operasyonunu Tutulma'nın beş aşamasıyla okuyor.
+    </p>
+
+    <h2>I. Behelit'in Çağrısı — Initial Access</h2>
+    <p>
+      Her Tutulma bir Behelit'le başlar. Sıradan bir taş gibi durur, ama
+      doğru elde, doğru anda titrer. Saldırgan tarafında bu;
+      bir <strong>oltalama eki</strong>, sızdırılmış bir VPN kimliği, bir
+      <strong>ProxyShell</strong> zinciri olabilir. Önemli olan tek şey
+      vardır: bağlantı kurulduğu an evrenin kapısı çoktan aralanmıştır.
+    </p>
+    <p>
+      Behelit'i taşıyan kişi her zaman saldırgan değildir. Genellikle bir
+      kullanıcıdır — pazarlama ekibinden biri, finans birimindeki yeni asistan.
+      Onlar farkında olmadan ritüele aday olurlar.
+    </p>
+
+    <h2>II. Yarılan Gökyüzü — Discovery & Lateral Movement</h2>
+    <p>
+      Operatör içeri girdiğinde sahne hemen değişmez. Casca'nın korkuyla
+      bakındığı o ilk dakikalar gibidir: belirsiz, sessiz, ama yanlış.
+      <code>net group "Domain Admins"</code>, <code>nltest /dclist:</code>,
+      bolca BloodHound, biraz Cobalt Strike beacon. Kara Süvari için bu
+      aşamadaki tek imkân, anomalinin sessizliğini duyabilmektir.
+    </p>
+    <blockquote>
+      "Bir şey değişti. Hava ağırlaştı. Hâlâ kimse görmüyor."
+    </blockquote>
+
+    <h2>III. Kurban Çağrısı — Privilege Escalation</h2>
+    <p>
+      Tanrısal El, ritüel için kurban ister. Operatör de aynısını yapar:
+      bir Domain Admin hesabı, bir KRBTGT hash'i, bir hypervisor şifresi.
+      <strong>Kerberoasting</strong>, <strong>DCSync</strong>,
+      <strong>ESXi root</strong>. Fark etmez — istenen tek şey, ağın en
+      sevdiği şeyi sunağa çıkarmasıdır.
+    </p>
+    <p>
+      Griffith'in trajedisi de buradadır: ekibini kendi elleriyle kurar,
+      sonra kendi elleriyle teslim eder. Ağı kuran admin de çoğu zaman
+      farkında olmadan en kolay anahtarı kendi eliyle bırakır.
+    </p>
+
+    <h2>IV. Femto'ya Dönüşüm — Encryption</h2>
+    <p>
+      Griffith, Femto olduğunda artık geri dönüşü yoktur. AES-256-CBC
+      anahtarı her dosyaya değdiği an, dosya artık o dosya değildir.
+      <code>.locked</code>, <code>.encrypted</code>, <code>.[id]-[mail]</code>
+      uzantıları, bir ismin geri çağrılamaz biçimde değiştiğini söyler:
+      <em>"Sen artık o değilsin."</em>
+    </p>
+    <p>
+      Modern aktörlerin çoğu bu aşamadan önce <strong>çift şantaj</strong>
+      uygular: önce veri sızdırma, sonra şifreleme. Yani önce kurbanın
+      ruhunu çalar, sonra bedenini şifreler.
+    </p>
+
+    <h2>V. Skull Knight'ın Müdahalesi — Response</h2>
+    <p>
+      Tutulma'da yalnızca bir figür Tanrısal El'i geri itebildi: Skull Knight.
+      Bunu yaparken Guts'ı kurtarmadı; sadece <em>kaçacak bir aralık açtı</em>.
+      Olay müdahalesi de tam olarak budur. Hiçbir Incident Response
+      ekibi olanı geri getirmez. Yapabileceği tek şey, ağın bir kısmının
+      kurtarılması için bir saatlik bir aralık açmaktır.
+    </p>
+    <ul>
+      <li>İzole et (segmentasyon, EDR containment).</li>
+      <li>Kimliği yok say (KRBTGT iki kez döndür, parolaları sıfırla).</li>
+      <li>Hâlâ ayakta olanı toparla (immutable backup, offline kopyalar).</li>
+      <li>Hikâyeyi yaz (forensic timeline, sonraki saldırıya hazırlık).</li>
+    </ul>
+
+    <h2>Damga, Defter'e</h2>
+    <p>
+      Bir kuruluş Tutulma'dan sağ çıktığında bir <strong>Damga</strong>
+      taşımaya başlar. Yöneticilerin gözünde, sigortacının raporunda,
+      regülatörün sicilinde. Bu damga acıdır — ama Guts gibi, onu pusulaya
+      çevirmek mümkündür: bir sonraki Behelit'i daha titrer titremez tanırsın.
+    </p>
+
+    <p class="signoff">— Kara Süvari, sabaha karşı, log dosyaları kanlı.</p>
+
+    <nav class="post-nav">
+      <a href="../index.html" class="btn btn-ghost">← Deftere Dön</a>
+      <a href="apostle-apt.html" class="btn btn-primary">Sonraki: Havariler →</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <p class="brand-name small">InfectedLab</p>
+      <p class="footer-note">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
+    </div>
+    <div>
+      <p class="footer-head">Bağlantılar</p>
+      <ul>
+        <li><a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="../bestiary.html">Bestiary</a></li>
+        <li><a href="../about.html">Kara Süvari Hakkında</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Damga</p>
+      <p class="footer-note">"Her zafer, bir sonraki demonu çağırır."</p>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> InfectedLab — Kara Süvari'nin Defteri</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Havariler: APT Gruplarının Anatomi Dersi — InfectedLab</title>
+<meta name="description" content="APT aktörlerini Berserk'in Apostles kavramı üzerinden anlayan bir alan analizi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="../index.html" class="brand-link">
+      <span class="brand-mark">⚔</span>
+      <span class="brand-name">InfectedLab</span>
+    </a>
+    <p class="brand-sub">Kara Süvari'nin Saha Defteri</p>
+  </div>
+  <nav class="site-nav">
+    <a href="../index.html">Defter</a>
+    <a href="../about.html">Kara Süvari</a>
+    <a href="../bestiary.html">Bestiary</a>
+    <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="page">
+  <article class="prose">
+    <p class="post-eyebrow">— Saha defteri / 15 Nisan 2026 —</p>
+    <h1>Havariler: APT Gruplarının Anatomi Dersi</h1>
+    <p class="lede">
+      Bir Havari, sıradan bir demondan iki şeyle ayrılır: bir zamanlar
+      insandı, ve bir zamanlar bir şeyi sevdi. APT aktörleri de aynı
+      şekilde inşa edilir. Onları korkunç yapan teknolojileri değildir;
+      bir zamanlar meşru bir kimliği sevmiş olmalarıdır.
+    </p>
+
+    <h2>Havari Doğmaz, Yapılır</h2>
+    <p>
+      Bir kişiye Behelit verilir. O kişi en sevdiği şeyi (annesi, sevdiği
+      kadın, çocuğu) sunağa koyar ve karşılığında insan biçimini terk
+      eder. APT'lerin doğuşu da aynıdır: bir aktör, meşru bir altyapıyı
+      (bir tedarikçi, bir CA sertifikası, bir GitHub Actions runner'ı)
+      kurban eder ve karşılığında ağın içinde insan formunda yürüme
+      hakkı kazanır.
+    </p>
+    <p>
+      Bu nedenle bir APT'yi sadece davranışla yakalamak zordur — çünkü
+      onun yarısı hâlâ meşrudur. Diğer yarısı dişlerini gizler.
+    </p>
+
+    <h2>Havari Türleri</h2>
+    <h3>1. Kasaplar — Loud, fast, financially motivated</h3>
+    <p>
+      İlk korkutan ama çabuk ölen Havari'ler. Conti, LockBit, BlackCat
+      türevleri. Çenelerini kapatmadan saldırırlar. Tehlikelidirler;
+      ama bir SOC ekibi için en azından <em>görünürdürler</em>.
+    </p>
+
+    <h3>2. Avcı — APT'ler</h3>
+    <p>
+      Yüzünü koruyan, gece yürüyen, sabırlı Havari. APT29, APT41,
+      Lazarus. Aylarca ağda yaşar, dikkat çekmez. Onun için
+      <em>persistence, persistence, persistence</em>.
+    </p>
+
+    <h3>3. Lord — Tanrısal El'in Yetiştirdikleri</h3>
+    <p>
+      Tek başına hareket etmez; bir devlet aygıtının kollarıdır. Bunlarla
+      karşılaştığında savaşı kazanmazsın — sadece geçişlerini geciktirirsin.
+      Equation Group, Sandworm, Volt Typhoon.
+    </p>
+
+    <h2>Havari'yi Tanımanın Üç İşareti</h2>
+    <ol>
+      <li>
+        <strong>Kalp atışı yavaştır.</strong>
+        Sıradan trojan'lar saatlerce gürültü çıkarırken, bir Havari haftalık
+        beacon'la idare eder. Ağda yaşar, yarışmaz.
+      </li>
+      <li>
+        <strong>İki yüzü vardır.</strong>
+        Bir yüzü meşrudur (geçerli sertifika, allowlisted yazılım, içeriden
+        bir kimlik). Diğer yüzü pencereden baktığında görülür: tuhaf saatlerde
+        çıkan tuhaf RPC çağrıları, sıra dışı PowerShell objesi.
+      </li>
+      <li>
+        <strong>Geri çağrılır.</strong>
+        Havari yenilse bile yok olmaz; başka bir biçimde geri döner. Bir APT
+        infra'sı söküldüğünde, üç ay sonra aynı TTP'lerle yeni bir kampanya
+        görürsün. Defterini bu yüzden tut.
+      </li>
+    </ol>
+
+    <h2>Onları Avlamak: Boscogn'un Kuralı</h2>
+    <p>
+      Boscogn, Şahin Birliği'nin en iyi savaşçılarından biriydi. Havari'yi
+      öldüremedi, ama saldırırken bile aklını kaybetmedi. Bir analist için
+      bu, MITRE ATT&CK haritasını sürekli açık tutmaktır.
+    </p>
+    <p>
+      Havari'yi <strong>davranışla</strong>, <strong>kimlikle</strong> ve
+      <strong>kapasiteyle</strong> üç koldan kuşatırsan kazanma şansın olur.
+      Tek başına IOC peşinden koşma; o IOC çoktan değişmiştir.
+    </p>
+
+    <blockquote>
+      "Onun gibi savaşmak istiyorsan,
+      onun gibi düşünmek zorundasın.
+      Ama olmamaya da dikkat et."
+    </blockquote>
+
+    <p class="signoff">— Kara Süvari, sırtında Ejder Kıran, defterinde üç yeni isim.</p>
+
+    <nav class="post-nav">
+      <a href="eclipse-ransomware.html" class="btn btn-ghost">← Önceki</a>
+      <a href="behelit-phishing.html" class="btn btn-primary">Sonraki: Behelit →</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <p class="brand-name small">InfectedLab</p>
+      <p class="footer-note">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
+    </div>
+    <div>
+      <p class="footer-head">Bağlantılar</p>
+      <ul>
+        <li><a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="../bestiary.html">Bestiary</a></li>
+        <li><a href="../about.html">Kara Süvari Hakkında</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Damga</p>
+      <p class="footer-note">"Her zafer, bir sonraki demonu çağırır."</p>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> InfectedLab — Kara Süvari'nin Defteri</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

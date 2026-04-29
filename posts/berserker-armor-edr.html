@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çılgın Zırh: EDR'nin Bedeli — InfectedLab</title>
+<meta name="description" content="EDR/XDR'ı Berserker Armor metaforu üzerinden okuyan saha analizi: koruma, bedel ve sınır.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="../index.html" class="brand-link">
+      <span class="brand-mark">⚔</span>
+      <span class="brand-name">InfectedLab</span>
+    </a>
+    <p class="brand-sub">Kara Süvari'nin Saha Defteri</p>
+  </div>
+  <nav class="site-nav">
+    <a href="../index.html">Defter</a>
+    <a href="../about.html">Kara Süvari</a>
+    <a href="../bestiary.html">Bestiary</a>
+    <a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="page">
+  <article class="prose">
+    <p class="post-eyebrow">— Saha defteri / 18 Mart 2026 —</p>
+    <h1>Çılgın Zırh: EDR'nin Bedeli</h1>
+    <p class="lede">
+      Berserker Zırh, taşıyıcısının sinirlerini kemiklerine çiviler.
+      Acıyı bastırır. Kemik kırıldığında bile zırh bir şekilde ayağa
+      kaldırır. Ama her giyişte bir parça aklını yer. EDR'ı agresif
+      kuralla doyurmak, tam olarak böyle bir zırh giymektir.
+    </p>
+
+    <h2>Zırhın İki Yüzü</h2>
+    <p>
+      EDR/XDR'ın iki modu vardır: <strong>monitör</strong> (sadece kayıt) ve
+      <strong>bloklama</strong> (aktif önleme). Zırh, ikinci moddur. İkisinin
+      arasındaki fark, kılıcı kınında tutmakla, kılıcı saplamakla aynıdır.
+      Saplamak hızlıdır; ama yanlış kişiyi de saplayabilirsin.
+    </p>
+
+    <h2>Zırhın Bedeli — False Positive Kanaması</h2>
+    <p>
+      Bir EDR aşırı agresifleştirildiğinde şu olur:
+    </p>
+    <ul>
+      <li>Geliştiriciler PowerShell çalıştıramaz olur.</li>
+      <li>IT, geçici script'leri imzasız çalıştıramaz.</li>
+      <li>Yeni bir yazılım kurulumu yarım saatlik bir tiket konusu olur.</li>
+      <li>SOC ekibi her gün 400 alarmla boğulur, gerçek alarm 401. olarak gelir.</li>
+    </ul>
+    <p>
+      Bu, Guts'ın zırhı çıkardıktan sonraki haline benzer: kanı kuruyor,
+      gözü kanlanmış, etrafındakileri tanıyamıyor. SOC tükenmişliği
+      (analyst burnout) bu zırhın bedelidir.
+    </p>
+
+    <h2>Schierke'nin Çağrısı — Tuning</h2>
+    <p>
+      Schierke, Guts'ın zırhın ruhuna kapılmaması için ona seslenir,
+      onu geri çağırır. Bir SOC ekibinin Schierke'si <strong>detection
+      engineer</strong>'dır. Görevleri:
+    </p>
+    <ol>
+      <li>
+        <strong>Beyaz liste yönetimi:</strong> Geliştiricilerin meşru
+        araçlarını <em>imza + path</em> ile belgele. Path-only allowlist
+        Femto'nun en sevdiği boşluktur.
+      </li>
+      <li>
+        <strong>Risk seviyesine göre kademeleme:</strong> DC'lerde
+        bloklama; çağrı merkezi makinelerinde bloklama; yazılım ekibi
+        makinelerinde sadece tespit + onaylı self-service.
+      </li>
+      <li>
+        <strong>Alert fatigue ölçümü:</strong> Aylık FP/TP oranı
+        izlenmeli. %95 FP'li bir kural, kuralın olmaması kadar zararlıdır.
+      </li>
+    </ol>
+
+    <h2>Skull Knight'ın Tavsiyesi — Defense in Depth</h2>
+    <p>
+      Skull Knight Guts'a der ki: "<em>Zırha güvenme. Zırh seni demonlardan
+      korur, ama insan gibi yaşamayı sana unutturur.</em>" Aynısı: tek bir
+      EDR'a güvenme. Modern bir savunma şudur:
+    </p>
+    <ul>
+      <li>Endpoint: EDR + AppLocker / WDAC</li>
+      <li>Identity: Phishing-resistant MFA + conditional access</li>
+      <li>Network: DNS RPZ + egress allowlist</li>
+      <li>Mail: Gateway + browser isolation</li>
+      <li>Backup: Immutable, offline, en az 3-2-1</li>
+    </ul>
+    <p>
+      Bu beş katman, Tutulma sırasında bir saatlik aralığı sağlar. Ve bir
+      saat, bir Kara Süvari için yeterli zamandır.
+    </p>
+
+    <blockquote>
+      "Zırhı çıkardığında soğuk hisset.
+      Soğuk, hâlâ insan olduğunun kanıtıdır."
+    </blockquote>
+
+    <p class="signoff">— Kara Süvari, sırtında ter, defterde son kural.</p>
+
+    <nav class="post-nav">
+      <a href="brand-of-sacrifice-ioc.html" class="btn btn-ghost">← Önceki: Kurban Damgası</a>
+      <a href="../index.html" class="btn btn-primary">Deftere Dön →</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <p class="brand-name small">InfectedLab</p>
+      <p class="footer-note">Bu defter bir kurgudur ve eğitim amaçlıdır. Berserk evreni Kentaro Miura'ya aittir.</p>
+    </div>
+    <div>
+      <p class="footer-head">Bağlantılar</p>
+      <ul>
+        <li><a href="https://github.com/InfectedLab" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="../bestiary.html">Bestiary</a></li>
+        <li><a href="../about.html">Kara Süvari Hakkında</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Damga</p>
+      <p class="footer-note">"Her zafer, bir sonraki demonu çağırır."</p>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> InfectedLab — Kara Süvari'nin Defteri</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
