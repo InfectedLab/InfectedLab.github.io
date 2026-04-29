@@ -46,10 +46,15 @@
     "en": "This world<br>is full of Apostles.",
     "ja": "この世界は<br>使徒で満ちている。"
   },
-  "hero.lede": {
-    "tr": "Her zararlı yazılım bir demondur; her saldırı bir kurban ritüeli. The Black Forge, ağda yürüyen Havarileri parçalamaya çalışan bir Kara Süvari'nin defteridir. Burada bulduğun her makale, Ejder Kıran'la kazılmış bir leş otopsisidir.",
-    "en": "Every malware is a demon; every attack is a sacrificial ritual. The Black Forge is the field notebook of a Black Swordsman trying to cleave the Apostles walking through the network. Each article here is a corpse autopsy carved with the Dragonslayer.",
-    "ja": "全てのマルウェアは魔物であり、全ての攻撃は供犠の儀式である。The Black Forge はネットワークを歩き回る使徒を斬ろうとする黒の剣士の手帖である。この帖の記事はすべてドラゴンころしで切り開いた屍の検分書だ。"
+  "hero.lede.1": {
+    "tr": "Her zararlı yazılım, karanlıktan çağrılmış bir demondur — yapısı, amacı ve kurbanı olan. Her analiz, bu varlığı ışığa çekerek parçalamaya çalışan bir çarpışmanın kaydıdır.",
+    "en": "Every malware is a demon summoned from the dark — with a form, a purpose, and a victim. Every analysis is the record of a confrontation that drags this entity into the light to take it apart.",
+    "ja": "全てのマルウェアは闇から呼び出された魔物である — 構造を持ち、目的を持ち、犠牲者を持つ。全ての解析は、その存在を光のもとに引き出して切り分けようとする戦いの記録である。"
+  },
+  "hero.lede.2": {
+    "tr": "The Black Forge; tersine mühendislik masasında, decompiler çıktılarının içinde ve tehdit aktörlerinin izlediği yollarda yürütülen araştırmaların defteridir. Burada bulduğun her yazı, bir ikilinin içine girip sağ çıkmanın belgesidir.",
+    "en": "The Black Forge is the field notebook of investigations carried out at the reverse engineering bench, inside decompiler output, and along the trails threat actors leave behind. Each article here is the report of going into a binary — and coming back out alive.",
+    "ja": "The Black Forge は、リバースエンジニアリングの机の上で、デコンパイラの出力の中で、そして脅威主体が辿った道筋の上で行われる調査の手帖である。ここに記される各記事は、バイナリの中へ踏み込み、生きて戻ってくることの記録である。"
   },
   "hero.cta.primary": { "tr": "Son Avlar",       "en": "Latest Hunts",   "ja": "近頃の狩り" },
   "hero.cta.ghost":   { "tr": "Bestiary'i Aç",   "en": "Open Bestiary",  "ja": "魔物図鑑を開く" },
