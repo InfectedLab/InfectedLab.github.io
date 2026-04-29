@@ -568,6 +568,73 @@ main { position: relative; z-index: 2; }
 .ioc-table tr:nth-child(even) td { background: rgba(20, 20, 26, 0.5); }
 .ioc-table td.hash { word-break: break-all; }
 
+/* ===== Glossary ===== */
+.glossary-section {
+  max-width: var(--max-w);
+  margin: 3.5rem auto 1.4rem;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  letter-spacing: 0.06em;
+  color: var(--parch);
+  position: relative;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(214, 205, 181, 0.08);
+}
+.glossary-section::before {
+  content: "❧";
+  margin-right: 0.5rem;
+  color: var(--blood-bright);
+  font-size: 1.1em;
+  opacity: 0.85;
+}
+[data-theme="operator"] .glossary-section {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border-bottom-color: var(--ink-3);
+}
+[data-theme="operator"] .glossary-section::before {
+  content: "#";
+  color: var(--blood-bright);
+  margin-right: 0.4rem;
+  font-weight: 800;
+}
+
+.beast .muted {
+  color: var(--bone-dim);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.9em;
+}
+[data-theme="operator"] .beast .muted { font-style: normal; }
+
+.beast-use {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--bone);
+}
+.beast-use a { color: var(--blood-bright); border-bottom: 1px dotted rgba(196, 32, 42, 0.4); }
+[data-theme="operator"] .beast-use a { border-bottom-color: rgba(88, 166, 255, 0.4); }
+
+.glossary-footer-note {
+  max-width: var(--reading-w);
+  margin: 3rem auto 1rem;
+  padding: 1.4rem clamp(1rem, 4vw, 3rem);
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--bone-dim);
+  border-top: 1px solid rgba(214, 205, 181, 0.08);
+}
+[data-theme="operator"] .glossary-footer-note {
+  font-family: var(--font-display);
+  font-style: normal;
+  border-top-color: var(--ink-3);
+}
+
 /* ===== Bestiary grid ===== */
 .bestiary {
   max-width: var(--max-w);
